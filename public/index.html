@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bardo Academic Centre for Education</title>
+  <meta name="description" content="Centre d'excellence éducative offrant des formations innovantes et des ressources pédagogiques de qualité.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="/public/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',
+            secondary: '#E31937',
+            accent: '#FFCC00',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+  <!-- ✅ HEADER + NAVIGATION -->
+  <!-- ✅ HEADER + NAVIGATION avec menu burger -->
+<header class="bg-white shadow-lg fixed w-full z-50 top-0">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    
+    <!-- Logo -->
+<!-- Logo + Message de bienvenue mis en valeur -->
+<a href="/" class="flex items-center space-x-4">
+  <div class="bg-white p-1 rounded-full shadow-md">
+    <img src="/logo-plateforme.png" alt="Bardo Academic Centre Logo" class="h-16 w-auto md:h-20 transition-transform duration-300 hover:scale-105">
+  </div>
+  <div>
+    <span class="font-bold text-xl text-primary block leading-tight">Bienvenue</span>
+    <span class="text-sm font-medium text-white bg-blue-600 px-2 py-0.5 rounded-md shadow-sm">
+      Cher Apprenant
+    </span>
+  </div>
+</a>
+
+
+
+    <!-- Menu Desktop -->
+    <nav class="hidden md:flex space-x-2">
+      <a href="#objectif" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Objectif & Mission</a>
+      <a href="#pedagogie" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Pédagogie</a>
+      <a href="#centre" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Notre Centre</a>
+      <a href="#experience" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Expériences</a>
+      <a href="/demande-acces.html" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Documents & Vidéos</a>
+      <a href="#inscription" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Comment s’inscrire</a>
+      <a href="#contact" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Contact</a>
+    </nav>
+
+    <!-- Bouton / icônes -->
+    <div class="hidden md:flex items-center space-x-4">
+      <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-600 hover:text-secondary">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="/connexion.html" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm font-medium transition duration-300">
+        Espace Étudiant
+      </a>
+    </div>
+
+    <!-- ✅ Burger menu -->
+    <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-primary text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- ✅ Menu Mobile -->
+  <div id="mobileMenu" class="md<:hidden hidden px-4 pb-4 bg-white shadow-lg border-t">
+    <nav class="flex flex-col space-y-2">
+      <a href="#objectif" class="block py-2 text-sm hover:text-blue-600">Objectif & Mission</a>
+      <a href="#pedagogie" class="block py-2 text-sm hover:text-blue-600">Pédagogie</a>
+      <a href="#centre" class="block py-2 text-sm hover:text-blue-600">Notre Centre</a>
+      <a href="#experience" class="block py-2 text-sm hover:text-blue-600">Expériences</a>
+      <a href="/demande-acces.html" class="block py-2 text-sm hover:text-blue-600">Documents & Vidéos</a>
+      <a href="#inscription" class="block py-2 text-sm hover:text-blue-600">Comment s’inscrire</a>
+      <a href="#contact" class="block py-2 text-sm hover:text-blue-600">Contact</a>
+      <a href="/connexion.html" class="block py-2 text-sm font-semibold text-primary">Espace Étudiant</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- HERO SECTION -->
+<section class="relative pt-40 pb-28 bg-gradient-to-br from-blue-900/90 via-blue-800/90 to-blue-700/90 text-white overflow-hidden">
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80')] bg-cover bg-center"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="md:w-2/3 lg:w-1/2">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+  <span class="block mb-2">
+    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-accent">Transformez</span> 
+    votre avenir avec
+  </span>
+  <span class="block">
+    l'expertise académique de
+  </span>
+  <span class="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-accent">
+    Bardo Academic Centre for Education
+  </span>
+</h1>
+      
+      <p class="text-xl md:text-2xl mb-10 font-light opacity-90">
+        Une approche innovante alliant théorie et pratique pour former les leaders de demain.
+      </p>
+      
+      <div class="flex flex-wrap gap-5">
+        <a href="#inscription" class="group relative overflow-hidden bg-accent hover:bg-blue-900 text-blue-900 hover:text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+          <span class="relative z-10">S'inscrire maintenant</span>
+          <span class="absolute inset-0 bg-white transition-transform duration-300 origin-left transform scale-x-0 group-hover:scale-x-100"></span>
+          <i class="fas fa-arrow-right ml-3 relative z-10 transition-transform duration-300 group-hover:translate-x-1"></i>
+        </a>
+        
+        <a href="#formations" class="group border-2 border-white hover:border-accent text-white hover:text-accent font-bold px-8 py-4 rounded-lg transition-all duration-300 flex items-center">
+          <span>Découvrir les formations</span>
+          <i class="fas fa-chevron-down ml-3 transition-transform duration-300 group-hover:translate-y-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Éléments décoratifs -->
+  <div class="absolute bottom-0 right-0 w-1/3 h-full">
+    <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-blue-600 opacity-20"></div>
+    <div class="absolute -right-40 -top-40 w-80 h-80 rounded-full bg-accent opacity-10"></div>
+  </div>
+  
+  <!-- Flèche défilement -->
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#formations" class="text-white hover:text-accent transition-colors duration-300">
+      <i class="fas fa-chevron-down text-2xl"></i>
+    </a>
+  </div>
+</section>
+
+
+<section id="specialisations" class="bg-gray-50 py-16 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-primary mb-8">
+      Nos Spécialisations
+    </h2>
+
+    <!-- Défilement horizontal amélioré -->
+    <div class="relative overflow-hidden group">
+      <div class="flex space-x-6 w-max" id="carouselTrack">
+        <!-- Élément 1 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1600195077070-b9ce1b524c89?auto=format&fit=crop&w=600&q=80" 
+               alt="Energies" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Énergies</span>
+          </div>
+        </div>
+
+        <!-- Élément 2 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=600&q=80" 
+               alt="Systèmes embarqués" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Systèmes embarqués</span>
+          </div>
+        </div>
+
+        <!-- Élément 3 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" 
+               alt="Cybersécurité" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Cybersécurité</span>
+          </div>
+        </div>
+
+        <!-- Élément 4 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=600&q=80" 
+               alt="Data & IA" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Data & IA</span>
+          </div>
+        </div>
+
+        <!-- Élément 5 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80" 
+               alt="Product Engineering" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Product Engineering</span>
+          </div>
+        </div>
+
+        <!-- Élément 6 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80" 
+               alt="Digital Industry" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Digital Industry</span>
+          </div>
+        </div>
+
+        <!-- Élément 7 -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+               alt="Santé & Technologie" 
+               class="w-full h-56 object-cover transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+            <span class="text-white font-bold text-xl">Santé & Technologie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- NOS FORMATIONS -->
+  <section id="formations" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-4">Nos Formations</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Formation 1 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+          <div class="h-48 bg-primary flex items-center justify-center text-white text-4xl">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-primary mb-3">Programmation & Digital</h3>
+            <p class="text-gray-600 mb-4">Formation complète en développement web, mobile et intelligence artificielle.</p>
+            <a href="#" class="text-secondary font-medium hover:underline">En savoir plus</a>
+          </div>
+        </div>
+        
+        <!-- Formation 2 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+          <div class="h-48 bg-secondary flex items-center justify-center text-white text-4xl">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-primary mb-3">Gestion & Commerce</h3>
+            <p class="text-gray-600 mb-4">Programmes d'excellence en management, marketing et commerce international.</p>
+            <a href="#" class="text-secondary font-medium hover:underline">En savoir plus</a>
+          </div>
+        </div>
+        
+        <!-- Formation 3 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+          <div class="h-48 bg-accent flex items-center justify-center text-primary text-4xl">
+            <i class="fas fa-microscope"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-primary mb-3">Sciences & Ingénierie</h3>
+            <p class="text-gray-600 mb-4">Parcours scientifiques avec approche pratique et projets concrets.</p>
+            <a href="#" class="text-secondary font-medium hover:underline">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROCHE PÉDAGOGIQUE -->
+  <section id="pedagogie" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="md:flex items-center gap-12">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Étudiants en cours" class="rounded-lg shadow-xl w-full h-auto">
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-3xl font-bold text-primary mb-6">Notre Approche Pédagogique</h2>
+          <p class="text-gray-700 mb-6 leading-relaxed">Au Bardo Academic Centre, nous adoptons une pédagogie active centrée sur l'apprenant, combinant théorie et pratique pour une assimilation optimale des connaissances.</p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-secondary text-white">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700 font-medium">Enseignants experts dans leur domaine</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-secondary text-white">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700 font-medium">Classes à effectifs réduits pour un suivi personnalisé</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-secondary text-white">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+              </div>
+              <div class="ml-3">
+                <p class="text-gray-700 font-medium">Accès à une plateforme de ressources en ligne</p>
+              </div>
+            </div>
+          </div>
+          
+          <a href="/demande-acces.html" class="inline-block mt-6 bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300">
+            Accéder aux ressources <i class="fas fa-external-link-alt ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE CAMPUS -->
+  <section id="campus" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-4">Notre Campus</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-2xl font-semibold text-primary mb-4">Un environnement moderne au cœur du Bardo</h3>
+          <p class="text-gray-700 mb-6 leading-relaxed">Notre centre éducatif dispose d'infrastructures modernes conçues pour favoriser l'apprentissage et l'épanouissement de nos étudiants.</p>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <i class="fas fa-wifi text-secondary text-2xl mb-2"></i>
+              <h4 class="font-medium text-primary">Wi-Fi Haut Débit</h4>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <i class="fas fa-laptop text-secondary text-2xl mb-2"></i>
+              <h4 class="font-medium text-primary">Salles Informatiques</h4>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <i class="fas fa-book text-secondary text-2xl mb-2"></i>
+              <h4 class="font-medium text-primary">Bibliothèque</h4>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <i class="fas fa-utensils text-secondary text-2xl mb-2"></i>
+              <h4 class="font-medium text-primary">Espace Cafétéria</h4>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc" alt="Salle de classe" class="rounded-lg shadow-md w-full h-48 object-cover">
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" alt="Bibliothèque" class="rounded-lg shadow-md w-full h-48 object-cover">
+          </div>
+          <div class="col-span-2">
+            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24" alt="Espace détente" class="rounded-lg shadow-md w-full h-48 object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="experience" class="py-16 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Ils parlent de nous</h2>
+        <div class="w-20 h-1 bg-accent mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Témoignage 1 -->
+        <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+          <div class="flex items-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Étudiante" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold">Sarah Ben Ammar</h4>
+              <p class="text-accent text-sm">Étudiante en Développement Web</p>
+            </div>
+          </div>
+          <p class="italic">"Les méthodes pédagogiques innovantes et l'accompagnement personnalisé m'ont permis de progresser rapidement et d'acquérir des compétences concrètes."</p>
+          <div class="mt-4 text-accent">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <!-- Témoignage 2 -->
+        <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+          <div class="flex items-center mb-4">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Étudiant" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold">Mohamed Trabelsi</h4>
+              <p class="text-accent text-sm">Étudiant en Data Science</p>
+            </div>
+          </div>
+          <p class="italic">"L'accès aux ressources en ligne et la qualité des enseignants font toute la différence. Je recommande vivement le Bardo Academic Centre."</p>
+          <div class="mt-4 text-accent">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        
+        <!-- Témoignage 3 -->
+        <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+          <div class="flex items-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Étudiante" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold">Leila Khalfallah</h4>
+              <p class="text-accent text-sm">Étudiante en Marketing Digital</p>
+            </div>
+          </div>
+          <p class="italic">"Une formation complète avec des cas pratiques réels. J'ai pu mettre en application immédiatement ce que j'ai appris dans mon stage."</p>
+          <div class="mt-4 text-accent">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA INSCRIPTION -->
+  <section id="inscription" class="py-16 bg-accent text-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">Prêt à rejoindre notre communauté ?</h2>
+      <p class="text-xl mb-8 max-w-3xl mx-auto">Démarrez votre parcours d'excellence dès maintenant avec le Bardo Academic Centre for Education.</p>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#" class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-md font-bold text-lg transition duration-300">
+          Demander une brochure <i class="fas fa-download ml-2"></i>
+        </a>
+        <a href="#" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-md font-bold text-lg transition duration-300">
+          Postuler en ligne <i class="fas fa-edit ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ MODAL POUR COMMENT S'INSCRIRE -->
+  <div id="modalInscription" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full p-8 rounded-xl shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-4 right-6 text-gray-500 hover:text-red-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-primary mb-6">📌 Procédure d'Admission</h2>
+      <p class="mb-6 text-gray-700">Pour intégrer le Bardo Academic Centre for Education :</p>
+      <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
+        <li>Remplissez le formulaire de candidature en ligne</li>
+        <li>Envoyez les documents requis (diplômes, CV, lettre de motivation)</li>
+        <li>Passez un entretien avec notre équipe pédagogique</li>
+        <li>Effectuez le paiement des frais de formation après acceptation</li>
+      </ul>
+      <div class="bg-gray-100 p-6 rounded-lg">
+        <h3 class="font-bold text-primary mb-3">Accès aux ressources pédagogiques :</h3>
+        <p class="mb-2"><i class="fas fa-circle text-secondary text-xs mr-2"></i> Après inscription, vous recevrez vos identifiants pour la plateforme</p>
+        <p><i class="fas fa-circle text-secondary text-xs mr-2"></i> Documents et vidéos disponibles sur <a href="/demande-acces.html" class="text-secondary font-medium underline">notre espace ressources</a></p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <a href="#" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300">
+          Commencer l'inscription <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ FOOTER -->
+  <footer class="bg-primary text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">Bardo Academic Centre</h3>
+        <p class="text-gray-300">Centre d'excellence éducative offrant des formations innovantes et des ressources pédagogiques de qualité.</p>
+        <div class="flex space-x-4 mt-4">
+          <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Formations</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300 hover:text-accent">Programmation & Digital</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Gestion & Commerce</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Sciences & Ingénierie</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Formations courtes</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="/demande-acces.html" class="text-gray-300 hover:text-accent">Ressources pédagogiques</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Admission</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Événements</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div id="contact">
+        <h3 class="text-lg font-bold mb-4">Contact</h3>
+        <address class="not-italic text-gray-300 space-y-2">
+          <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i> 20 Avenue du Bardo, Tunis</p>
+          <p><i class="fas fa-phone-alt mr-2 text-accent"></i> +216 97 898 050</p>
+          <p><i class="fas fa-envelope mr-2 text-accent"></i> bace.dg@gmail.com</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Lun-Ven: 8h-18h</p>
+        </address>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400 text-sm">
+      <p>© 2023 Bardo Academic Centre for Education. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    function closeModal() {
+      document.getElementById("modalInscription").classList.add("hidden");
+    }
+    
+    // Ouvre modal quand clic sur nav
+    document.querySelectorAll('a[href="#inscription"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById("modalInscription").classList.remove("hidden");
+      });
+    });
+    
+    // Animation au défilement
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  burgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Optimisation du carrousel
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const carouselTrack = document.getElementById('carouselTrack');
+    
+    // Vitesse d'animation augmentée (25s au lieu de 40s)
+    carouselTrack.style.animationDuration = '25s';
+    
+    // Gestion du clic optimisée
+    carouselItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        // Stop l'animation immédiatement
+        carouselTrack.style.animationPlayState = 'paused';
+        
+        // Animation plus rapide avec requestAnimationFrame
+        requestAnimationFrame(() => {
+          // Reset tous les items en une seule opération
+          carouselItems.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('img').style.transform = 'scale(1)';
+          });
+          
+          // Active l'élément cliqué avec transition fluide
+          this.classList.add('active');
+          this.querySelector('img').style.transform = 'scale(1.08)'; // Zoom légèrement augmenté
+          
+          // Centrer l'élément cliqué si possible
+          this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+      });
+      
+      // Animation au survol plus réactive
+      item.addEventListener('mouseenter', () => {
+        item.querySelector('img').style.transform = 'scale(1.03)';
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        if (!item.classList.contains('active')) {
+          item.querySelector('img').style.transform = 'scale(1)';
+        }
+      });
+    });
+    
+    // Burger menu optimisé
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (burgerBtn && mobileMenu) {
+      burgerBtn.addEventListener('click', () => {
+        // Transition plus rapide
+        mobileMenu.classList.toggle('opacity-0');
+        mobileMenu.classList.toggle('opacity-100');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('translate-y-0');
+      });
+    }
+  });
+</script>
+<script>
+  document.querySelectorAll('.carousel-item').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    document.getElementById('carouselTrack').style.animationPlayState = 'paused';
+    item.style.transform = 'scale(1.05)';
+  });
+  
+  item.addEventListener('mouseleave', () => {
+    document.getElementById('carouselTrack').style.animationPlayState = 'running';
+    item.style.transform = 'scale(1)';
+  });
+});
+</script>
+
+</body>
+</html>

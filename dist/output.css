@@ -1,0 +1,30 @@
+/* Animation ultra-rapide avec arrêt uniquement sur les images */
+#carouselTrack {
+  will-change: transform;
+  animation: scroll-x 7s linear infinite; /* Défilement très rapide */
+}
+
+@keyframes scroll-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% + 100vw)); }
+}
+
+.carousel-item {
+  transition: transform 0.15s ease-out; /* Transition ultra-rapide */
+  position: relative;
+}
+
+/* Arrêt uniquement au survol des images, pas de toute la section */
+.carousel-item:hover {
+  transform: scale(1.05);
+}
+
+.carousel-item:hover ~ #carouselTrack,
+.carousel-item:hover #carouselTrack {
+  animation-play-state: paused;
+}
+
+/* Solution alternative plus fiable avec JavaScript */
+.carousel-item {
+  cursor: pointer;
+}
