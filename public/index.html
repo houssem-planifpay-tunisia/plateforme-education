@@ -10,6 +10,331 @@
   <link href="/public/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        :root {
+            --primary: #3b82f6;
+            --gray-50: #f9fafb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+       /* Styles pour le modal genre */
+       #genderModal {
+        backdrop-filter: blur(8px);
+      }
+
+      .gender-btn {
+        transition: all 0.3s ease;
+      }
+      .gender-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      }
+        .bg-gray-50 {
+            background-color: var(--gray-50);
+        }
+        
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        
+        .max-w-7xl {
+            max-width: 80rem;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .sm\:px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .lg\:px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .group:hover .pause-animation {
+            animation-play-state: paused;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .space-x-6 > * + * {
+            margin-left: 1.5rem;
+        }
+        
+        .w-max {
+            width: max-content;
+        }
+        
+        .carousel-track {
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-288px * 7 - 1.5rem * 7));
+    }
+}
+        
+        .pause-animation {
+            animation-play-state: running;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-288px * 7 - 1.5rem * 7));
+            }
+        }
+        
+        .carousel-item {
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+        
+        .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .w-72 {
+            width: 18rem;
+        }
+        
+        .flex-shrink-0 {
+            flex-shrink: 0;
+        }
+        
+        .cursor-pointer {
+            cursor: pointer;
+        }
+        
+        .w-full {
+            width: 100%;
+        }
+        
+        .h-56 {
+            height: 14rem;
+        }
+        
+        .object-cover {
+            object-fit: cover;
+        }
+        
+        .transition-transform {
+            transition-property: transform;
+        }
+        
+        .duration-500 {
+            transition-duration: 500ms;
+        }
+        
+        .absolute {
+            position: absolute;
+        }
+        
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .bg-gradient-to-t {
+            background-image: linear-gradient(to top, var(--tw-gradient-stops));
+        }
+        
+        .from-black\/70 {
+            --tw-gradient-from: rgba(0, 0, 0, 0.7);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
+        }
+        
+        .via-black\/40 {
+            --tw-gradient-stops: var(--tw-gradient-from), rgba(0, 0, 0, 0.4), var(--tw-gradient-to, rgba(0, 0, 0, 0));
+        }
+        
+        .to-transparent {
+            --tw-gradient-to: transparent;
+        }
+        
+        .items-end {
+            align-items: flex-end;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .transition {
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+        }
+        
+        .text-white {
+            color: white;
+        }
+        
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        
+        .fixed {
+            position: fixed;
+        }
+        
+        .bg-black\/90 {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .z-50 {
+            z-index: 50;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .lightbox-image {
+            max-width: 95vw;
+            max-height: 95vh;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        
+        /* Navigation arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .group:hover .carousel-nav {
+            opacity: 1;
+        }
+        
+        .carousel-prev {
+            left: 10px;
+        }
+        
+        .carousel-next {
+            right: 10px;
+        }
+        
+        /* Indicateurs de progression */
+        .carousel-progress {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: background-color 0.3s ease;
+        }
+        
+        .progress-dot.active {
+            background-color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .carousel-track {
+                animation-duration: 25s;
+            }
+            
+            .carousel-nav {
+                display: none;
+            }
+        }
+    </style>
   <script>
     tailwind.config = {
       theme: {
@@ -25,7 +350,46 @@
   </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
-
+<!-- ✅ MODAL CHOIX GENRE AU PREMIER VISITE -->
+<!-- ✅ MODAL CHOIX GENRE AU PREMIER VISITE -->
+<div id="genderModal" class="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
+  <div class="bg-white max-w-md w-full p-6 sm:p-8 rounded-2xl shadow-2xl text-center">
+    <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-gradient-to-r from-blue-400 to-pink-400 rounded-full flex items-center justify-center">
+      <i class="fas fa-user text-white text-2xl sm:text-3xl"></i>
+    </div>
+    
+   <h2 class="text-lg sm:text-xl font-light text-gray-800 mb-2">
+  Bienvenue chez 
+  <span class="block text-base xs:text-lg sm:text-xl font-bold text-primary mt-2 whitespace-nowrap overflow-hidden text-ellipsis px-1">
+  Bardo Academic Center for Education
+</span>
+</h2>
+    
+    <p class="text-gray-600 mb-6 text-sm sm:text-base">Choisissez votre profil pour personnaliser votre expérience</p>
+    
+    <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-6">
+      <!-- Bouton Homme -->
+      <button onclick="selectGender('homme')" 
+              class="gender-btn bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-400 p-3 sm:p-4 rounded-xl transition-all duration-300 group">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-blue-400 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+          <i class="fas fa-mars text-white text-lg sm:text-xl"></i>
+        </div>
+        <span class="font-semibold text-blue-600 text-sm sm:text-base">Homme</span>
+      </button>
+      
+      <!-- Bouton Femme -->
+      <button onclick="selectGender('femme')" 
+              class="gender-btn bg-pink-50 hover:bg-pink-100 border-2 border-pink-200 hover:border-pink-400 p-3 sm:p-4 rounded-xl transition-all duration-300 group">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-pink-400 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+          <i class="fas fa-venus text-white text-lg sm:text-xl"></i>
+        </div>
+        <span class="font-semibold text-pink-600 text-sm sm:text-base">Femme</span>
+      </button>
+    </div>
+    
+    <p class="text-xs text-gray-400">Ce choix influence l'apparence visuelle du site. Vous pourrez le modifier ultérieurement.</p>
+  </div>
+</div>
   <!-- ✅ HEADER + NAVIGATION -->
   <!-- ✅ HEADER + NAVIGATION avec menu burger -->
 <header class="bg-white shadow-lg fixed w-full z-50 top-0">
@@ -35,7 +399,7 @@
 <!-- Logo + Message de bienvenue mis en valeur -->
 <a href="/" class="flex items-center space-x-4">
   <div class="bg-white p-1 rounded-full shadow-md">
-    <img src="/logo-plateforme.png" alt="Bardo Academic Centre Logo" class="h-16 w-auto md:h-20 transition-transform duration-300 hover:scale-105">
+    <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png" alt="Bardo Academic Centre Logo" class="h-16 w-auto md:h-20 transition-transform duration-300 hover:scale-105">
   </div>
   <div>
     <span class="font-bold text-xl text-primary block leading-tight">Bienvenue</span>
@@ -63,16 +427,18 @@
       <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-600 hover:text-secondary">
         <i class="fab fa-facebook-f"></i>
       </a>
-      <a href="/connexion.html" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm font-medium transition duration-300">
+      <a href="/login-qr.html" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm font-medium transition duration-300">
         Espace Étudiant
       </a>
     </div>
 
     <!-- ✅ Burger menu -->
-    <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-primary text-2xl focus:outline-none">
-      <i class="fas fa-bars"></i>
+    <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-primary text-2xl focus:outline-none" aria-label="Ouvrir le menu" title="Ouvrir le menu">
+      <span class="sr-only">Ouvrir le menu</span>
+      <i class="fas fa-bars" aria-hidden="true"></i>
     </button>
   </div>
+  
 
   <!-- ✅ Menu Mobile -->
   <div id="mobileMenu" class="md<:hidden hidden px-4 pb-4 bg-white shadow-lg border-t">
@@ -84,10 +450,20 @@
       <a href="/demande-acces.html" class="block py-2 text-sm hover:text-blue-600">Documents & Vidéos</a>
       <a href="#inscription" class="block py-2 text-sm hover:text-blue-600">Comment s’inscrire</a>
       <a href="#contact" class="block py-2 text-sm hover:text-blue-600">Contact</a>
-      <a href="/connexion.html" class="block py-2 text-sm font-semibold text-primary">Espace Étudiant</a>
+      <a href="/login-qr.html" class="block py-2 text-sm font-semibold text-primary">Espace Étudiant</a>
     </nav>
   </div>
 </header>
+<script>
+  // Script d’ouverture/fermeture du menu mobile
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  });
+</script>
 
   <!-- HERO SECTION -->
 <section class="relative pt-40 pb-28 bg-gradient-to-br from-blue-900/90 via-blue-800/90 to-blue-700/90 text-white overflow-hidden">
@@ -99,13 +475,13 @@
     <div class="md:w-2/3 lg:w-1/2">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
   <span class="block mb-2">
-    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-accent">Transformez</span> 
-    votre avenir avec
-  </span>
-  <span class="block">
+  <span id="dynamicTransformText" class="bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-accent">Transformez
+  votre avenir </span> avec
+</span>
+  <span  class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-accent">
     l'expertise académique de
   </span>
-  <span class="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-accent">
+  <span class="block">
     Bardo Academic Centre for Education
   </span>
 </h1>
@@ -114,15 +490,16 @@
         Une approche innovante alliant théorie et pratique pour former les leaders de demain.
       </p>
       
-      <div class="flex flex-wrap gap-5">
-        <a href="#inscription" class="group relative overflow-hidden bg-accent hover:bg-blue-900 text-blue-900 hover:text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
-          <span class="relative z-10">S'inscrire maintenant</span>
-          <span class="absolute inset-0 bg-white transition-transform duration-300 origin-left transform scale-x-0 group-hover:scale-x-100"></span>
-          <i class="fas fa-arrow-right ml-3 relative z-10 transition-transform duration-300 group-hover:translate-x-1"></i>
-        </a>
+      <div class="flex flex-wrap gap-3">
+        <a href="#inscription" 
+   class="group relative overflow-hidden bg-accent hover:bg-blue-900 text-blue-900 hover:text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+  <span class="relative z-10">S'inscrire maintenant</span>
+  <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 transition-transform duration-300 origin-left transform scale-x-0 group-hover:scale-x-100"></span>
+  <i class="fas fa-arrow-right ml-3 relative z-10 transition-transform duration-300 group-hover:translate-x-1"></i>
+</a>
         
         <a href="#formations" class="group border-2 border-white hover:border-accent text-white hover:text-accent font-bold px-8 py-4 rounded-lg transition-all duration-300 flex items-center">
-          <span>Découvrir les formations</span>
+          <span>Découvrir nos formations</span>
           <i class="fas fa-chevron-down ml-3 transition-transform duration-300 group-hover:translate-y-1"></i>
         </a>
       </div>
@@ -143,90 +520,118 @@
   </div>
 </section>
 
-
 <section id="specialisations" class="bg-gray-50 py-16 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-center text-primary mb-8">
-      Nos Spécialisations
-    </h2>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-primary mb-8">
+                Découvrez BACE en Images
+            </h2>
 
-    <!-- Défilement horizontal amélioré -->
-    <div class="relative overflow-hidden group">
-      <div class="flex space-x-6 w-max" id="carouselTrack">
-        <!-- Élément 1 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1600195077070-b9ce1b524c89?auto=format&fit=crop&w=600&q=80" 
-               alt="Energies" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Énergies</span>
-          </div>
-        </div>
+            <!-- Défilement horizontal amélioré -->
+            <div class="relative overflow-hidden group">
+                <button class="carousel-nav carousel-prev" onclick="scrollCarousel('prev')" aria-label="Précédent" title="Précédent">
+                    <span class="sr-only">Précédent</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="flex space-x-6 w-max carousel-track pause-animation" id="carouselTrack">
+                    <!-- Élément 1 -->
+                    <div onclick="openLightbox('https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/images/IMG-20250805-WA0094.jpg')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/images/IMG-20250805-WA0094.jpg" 
+                             alt="Félicitation" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Félicitation</span>
+                        </div>
+                    </div>
 
-        <!-- Élément 2 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=600&q=80" 
-               alt="Systèmes embarqués" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Systèmes embarqués</span>
-          </div>
-        </div>
+                    <!-- Élément 2 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=600&q=80')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=600&q=80" 
+                             alt="Systèmes embarqués" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Systèmes embarqués</span>
+                        </div>
+                    </div>
 
-        <!-- Élément 3 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" 
-               alt="Cybersécurité" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Cybersécurité</span>
-          </div>
-        </div>
+                    <!-- Élément 3 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" 
+                             alt="Cybersécurité" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Cybersécurité</span>
+                        </div>
+                    </div>
 
-        <!-- Élément 4 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=600&q=80" 
-               alt="Data & IA" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Data & IA</span>
-          </div>
-        </div>
+                    <!-- Élément 4 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=600&q=80')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=600&q=80" 
+                             alt="Data & IA" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Data & IA</span>
+                        </div>
+                    </div>
 
-        <!-- Élément 5 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80" 
-               alt="Product Engineering" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Product Engineering</span>
-          </div>
-        </div>
+                    <!-- Élément 5 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80" 
+                             alt="Product Engineering" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Product Engineering</span>
+                        </div>
+                    </div>
 
-        <!-- Élément 6 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80" 
-               alt="Digital Industry" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Digital Industry</span>
-          </div>
-        </div>
+                    <!-- Élément 6 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80" 
+                             alt="Digital Industry" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Digital Industry</span>
+                        </div>
+                    </div>
 
-        <!-- Élément 7 -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 carousel-item">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
-               alt="Santé & Technologie" 
-               class="w-full h-56 object-cover transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
-            <span class="text-white font-bold text-xl">Santé & Technologie</span>
-          </div>
+                    <!-- Élément 7 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80')" class="relative group overflow-hidden rounded-2xl shadow-xl w-72 flex-shrink-0 cursor-pointer carousel-item">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+                             alt="Santé & Technologie" 
+                             class="w-full h-56 object-cover transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-6 transition duration-500">
+                            <span class="text-white font-bold text-xl">Santé & Technologie</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav carousel-next" onclick="scrollCarousel('next')" aria-label="Suivant" title="Suivant">
+                    <span class="sr-only">Suivant</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                </button>
+                
+                <!-- Indicateurs de progression -->
+                <div class="carousel-progress">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- LIGHTBOX PLEIN ÉCRAN -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden" onclick="closeLightbox()">
+        <img id="lightboxImage" src="" alt="Image plein écran" class="lightbox-image" />
     </div>
-  </div>
-</section>
-
 
 
 
@@ -484,7 +889,7 @@
         <p><i class="fas fa-circle text-secondary text-xs mr-2"></i> Documents et vidéos disponibles sur <a href="/demande-acces.html" class="text-secondary font-medium underline">notre espace ressources</a></p>
       </div>
       <div class="mt-6 flex justify-end">
-        <a href="#" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300">
+        <a href="demande-acces.html" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300">
           Commencer l'inscription <i class="fas fa-arrow-right ml-2"></i>
         </a>
       </div>
@@ -536,10 +941,11 @@
       <div id="contact">
         <h3 class="text-lg font-bold mb-4">Contact</h3>
         <address class="not-italic text-gray-300 space-y-2">
-          <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i> 20 Avenue du Bardo, Tunis</p>
+          <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i>84, rue des Orangers Le Bardo-Tunis</p>
           <p><i class="fas fa-phone-alt mr-2 text-accent"></i> +216 97 898 050</p>
           <p><i class="fas fa-envelope mr-2 text-accent"></i> bace.dg@gmail.com</p>
           <p><i class="fas fa-clock mr-2 text-accent"></i> Lun-Ven: 8h-18h</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Samedi: 9h-15h</p>
         </address>
       </div>
     </div>
@@ -655,6 +1061,139 @@
   });
 });
 </script>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+
+  function openLightbox() {
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Bloquer le scroll de fond
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = ''; // Rétablir scroll
+  }
+
+  // Fermer lightbox avec touche Échap
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+      closeLightbox();
+    }
+  });
+</script>
+
+<script>
+        // Fonction pour ouvrir la lightbox avec l'image spécifique
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            
+            lightboxImage.src = imageSrc;
+            lightbox.classList.remove('hidden');
+            
+            // Empêcher la propagation du clic pour éviter de fermer la lightbox
+            lightboxImage.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+        
+        // Fonction pour fermer la lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+        
+        // Fonction pour faire défiler le carrousel manuellement
+        function scrollCarousel(direction) {
+            const track = document.getElementById('carouselTrack');
+            const itemWidth = 288; // Largeur d'un élément + marge
+            const scrollAmount = itemWidth * 2; // Défiler de 2 éléments
+            
+            if (direction === 'prev') {
+                track.scrollLeft -= scrollAmount;
+            } else {
+                track.scrollLeft += scrollAmount;
+            }
+        }
+        
+        // Gestion du clavier pour la lightbox
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+        
+        // Mise à jour des indicateurs de progression
+        function updateProgressDots() {
+            const track = document.getElementById('carouselTrack');
+            const dots = document.querySelectorAll('.progress-dot');
+            const scrollPercentage = track.scrollLeft / (track.scrollWidth - track.clientWidth);
+            const activeDot = Math.floor(scrollPercentage * dots.length);
+            
+            dots.forEach((dot, index) => {
+                if (index === activeDot) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('carouselTrack');
+            
+            // Mettre à jour les indicateurs lors du défilement
+            track.addEventListener('scroll', updateProgressDots);
+            
+            // Mettre à jour les indicateurs au chargement
+            updateProgressDots();
+        });
+    </script>
+
+    <script>
+  // Gestion du choix de genre
+  function selectGender(gender) {
+    // Appliquer les styles selon le genre (sauvegarde)
+    applyGenderStyles(gender);
+    
+    // Cacher le modal
+    document.getElementById('genderModal').classList.add('hidden');
+    
+    // Montrer le contenu principal
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function applyGenderStyles(gender) {
+    const transformText = document.getElementById('dynamicTransformText');
+    
+    if (gender === 'homme') {
+      // Styles pour Homme - Bleu
+      transformText.classList.remove('bg-gradient-to-r', 'from-pink-400', 'to-accent');
+      transformText.classList.add('bg-gradient-to-r', 'from-blue-400', 'to-accent');
+      
+    } else if (gender === 'femme') {
+      // Styles pour Femme - Rose
+      transformText.classList.remove('bg-gradient-to-r', 'from-blue-400', 'to-accent');
+      transformText.classList.add('bg-gradient-to-r', 'from-pink-400', 'to-accent');
+    }
+  }
+
+  // Au chargement de la page - TOUJOURS montrer le modal
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('genderModal').classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    
+    // Ajouter le bouton pour re-changer
+    addGenderSwitchButton();
+  });
+  
+  // Pour forcer le modal à chaque rechargement (optionnel)
+  window.onbeforeunload = function() {
+    // Vous pouvez ajouter du code ici si besoin
+  }
+</script>
+
 
 </body>
 </html>

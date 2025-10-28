@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BACE - Centre Académique d'Excellence</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome pour les icônes -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="/public/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #003366;
+      --secondary: #E31937;
+      --accent: #FFCC00;
+      --gray-50: #f9fafb;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    
+    .bg-gray-50 {
+      background-color: var(--gray-50);
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .bg-primary {
+      background-color: var(--primary);
+    }
+    
+    .bg-secondary {
+      background-color: var(--secondary);
+    }
+    
+    .bg-accent {
+      background-color: var(--accent);
+    }
+    
+    /* Animation pour le logo */
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-600px); }
+    }
+    
+    .wave1 {
+      animation: waveMove 25s linear infinite;
+    }
+    
+    .wave2 {
+      animation: waveMove 20s linear infinite;
+    }
+    
+    .wave3 {
+      animation: waveMove 15s linear infinite;
+    }
+    
+    /* Styles pour le formulaire */
+    .form-input {
+      transition: all 0.3s ease;
+      border: 1px solid #d1d5db;
+    }
+    
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+    }
+    
+    /* Bouton avec effet de brillance */
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-shine:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transition: 0.5s;
+    }
+    
+    .btn-shine:hover:before {
+      left: 100%;
+    }
+    
+    /* Animation d'apparition progressive */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    /* Effet de carte avec ombre améliorée */
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Badge avec effet de pulsation */
+    .pulse-badge {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 204, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+      }
+    }
+    
+    /* Section avec dégradé subtil */
+    .gradient-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+    }
+    
+    /* Styles pour la section de témoignages */
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Amélioration du footer */
+    .footer-link {
+      transition: color 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      color: var(--accent);
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',
+            secondary: '#E31937',
+            accent: '#FFCC00',
+          }
+        }
+      }
+    }
+  </script>
+
+  <meta name="description" content="BACE - Centre Académique Éducatif à Tunis. Formations, ressources pédagogiques et programmes innovants pour la réussite de chaque apprenant.">
+  <meta name="keywords" content="éducation, bardo, formation, soutien scolaire, BACE, centre académique, Tunisie">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="BACE - Bardo Academic Centre for Education">
+  <meta property="og:description" content="Votre réussite est notre objectif. Découvrez nos programmes éducatifs.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png">
+  <meta property="og:url" content="https://bace.tn/demande-acces.html">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen flex flex-col justify-between font-sans">
+  <!-- ✅ HEADER + NAVIGATION avec menu burger -->
+  <header class="bg-white shadow-lg fixed w-full z-50 top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-4">
+        <div class="bg-white p-1 rounded-full shadow-md">
+          <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png"
+               alt="Bardo Academic Centre Logo"
+               class="h-16 w-auto md:h-20 transition-transform duration-300 hover:scale-105">
+        </div>
+        <div>
+          <span class="font-bold text-xl text-primary block leading-tight">Bienvenue</span>
+          <span class="text-sm font-medium text-white bg-blue-600 px-2 py-0.5 rounded-md shadow-sm pulse-badge">
+            Cher Apprenant
+          </span>
+        </div>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex space-x-2">
+        <a href="#objectif" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Objectif & Mission</a>
+        <a href="#pedagogie" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Pédagogie</a>
+        <a href="#centre" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Notre Centre</a>
+        <a href="#experience" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Expériences</a>
+        <a href="/demande-acces.html" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Documents & Vidéos</a>
+        <a href="#inscription" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Comment s'inscrire</a>
+        <a href="#contact" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Contact</a>
+      </nav>
+
+      <!-- Bouton / icônes -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-600 hover:text-secondary transition-colors duration-300">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="/login-qr.html"
+           class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm font-medium transition-all duration-300 btn-shine">
+          Espace Étudiant
+        </a>
+      </div>
+
+      <!-- ✅ Burger menu -->
+      <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-primary text-2xl focus:outline-none transition-colors duration-300">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- ✅ Menu Mobile -->
+    <div id="mobileMenu" class="hidden px-4 pb-4 bg-white shadow-lg border-t md:hidden">
+      <nav class="flex flex-col space-y-2">
+        <a href="#objectif" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Objectif & Mission</a>
+        <a href="#pedagogie" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Pédagogie</a>
+        <a href="#centre" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Notre Centre</a>
+        <a href="#experience" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Expériences</a>
+        <a href="/demande-acces.html" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Documents & Vidéos</a>
+        <a href="#inscription" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Comment s'inscrire</a>
+        <a href="#contact" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Contact</a>
+        <a href="/login-qr.html" class="block py-2 text-sm font-semibold text-primary">Espace Étudiant</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-12">
+    <!-- Section Hero avec logo et formulaire -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-in-up">
+        <!-- Logo avec animation de vagues -->
+        <div class="logo-animation mb-8 mx-auto" style="width: 400px; height: 100px;">
+  <svg viewBox="0 0 600 120" width="100%" height="100%">
+    <defs>
+      <!-- Dégradé bleu océan pour BACE -->
+      <linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FFD94C" />
+        <stop offset="35%" stop-color="#5FD1B3" />
+        <stop offset="65%" stop-color="#4FA8ED" />
+        <stop offset="100%" stop-color="#003E92" />
+      </linearGradient>
+
+      <!-- Dégradé rouge/blanc pour TUNIS -->
+      <linearGradient id="redWhite" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FF0000">
+          <animate attributeName="offset" values="0;1;0" dur="6s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="50%" stop-color="#FFFFFF">
+          <animate attributeName="offset" values="0.5;1;0.5" dur="6s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stop-color="#C00000">
+          <animate attributeName="offset" values="1;0;1" dur="6s" repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+
+      <!-- Filtre Glow -->
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Clip pour le texte BACE -->
+      <clipPath id="clip-bace">
+        <text x="35%" y="55%" text-anchor="middle" dominant-baseline="middle"
+              font-size="70" font-weight="700" filter="url(#glow)">
+           · BACE  
+        </text>
+      </clipPath>
+
+      <!-- Clip pour le texte TUNIS -->
+      <clipPath id="clip-tunis">
+        <text x="75%" y="55%" text-anchor="middle" dominant-baseline="middle"
+              font-size="70" font-weight="700" filter="url(#glow)">
+          TUNIS · 
+        </text>
+      </clipPath>
+    </defs>
+
+    <!-- BACE : vagues bleues -->
+    <g clip-path="url(#clip-bace)">
+      <rect width="600" height="120" fill="url(#ocean)" />
+      <g class="wave1">
+        <g transform="translate(0, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#b3e0ff" fill-opacity="0.9" />
+        </g>
+        <g transform="translate(600, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#b3e0ff" fill-opacity="0.9" />
+        </g>
+      </g>
+
+      <g class="wave2">
+        <g transform="translate(0, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#66ccff" fill-opacity="0.8" />
+        </g>
+        <g transform="translate(600, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#66ccff" fill-opacity="0.8" />
+        </g>
+      </g>
+
+      <g class="wave3">
+        <g transform="translate(0, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#0099e6" fill-opacity="0.7" />
+        </g>
+        <g transform="translate(600, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#0099e6" fill-opacity="0.7" />
+        </g>
+      </g>
+    </g>
+
+    <!-- TUNIS : vagues rouges et blanches -->
+    <g clip-path="url(#clip-tunis)">
+      <rect width="600" height="120" fill="url(#redWhite)" />
+      <g class="wave1">
+        <g transform="translate(0, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#ffcccc" fill-opacity="0.9" />
+        </g>
+        <g transform="translate(600, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#ffcccc" fill-opacity="0.9" />
+        </g>
+      </g>
+
+      <g class="wave2">
+        <g transform="translate(0, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#ff9999" fill-opacity="0.8" />
+        </g>
+        <g transform="translate(600, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#ff9999" fill-opacity="0.8" />
+        </g>
+      </g>
+
+      <g class="wave3">
+        <g transform="translate(0, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#e60000" fill-opacity="0.7" />
+        </g>
+        <g transform="translate(600, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#e60000" fill-opacity="0.7" />
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+
+
+        <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4 fade-in-up delay-1">
+          Votre Excellence Académique Commence Ici
+        </h1>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto fade-in-up delay-2">
+          Rejoignez le Bardo Academic Centre for Education et bénéficiez d'un accompagnement personnalisé pour réussir votre parcours académique.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Formulaire d'inscription -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 card-hover fade-in-up delay-2">
+          <h2 class="text-2xl font-bold text-primary mb-6 text-center">Inscrivez-vous dès maintenant</h2>
+          <form id="subscribeForm" class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <input type="text" name="prenom" placeholder="Votre prénom*"
+                  class="w-full px-4 py-3 form-input rounded-lg focus:outline-none" required>
+              </div>
+              <div>
+                <input type="text" name="nom" placeholder="Votre nom*"
+                  class="w-full px-4 py-3 form-input rounded-lg focus:outline-none" required>
+              </div>
+            </div>
+            <div>
+              <input type="email" name="email" placeholder="Votre email*"
+                class="w-full px-4 py-3 form-input rounded-lg focus:outline-none" required>
+            </div>
+            <div>
+              <input type="tel" name="phone" placeholder="Votre téléphone*"
+                class="w-full px-4 py-3 form-input rounded-lg focus:outline-none" required>
+            </div>
+            <div>
+              <input type="tel" name="confirmPhone" placeholder="Confirmez votre téléphone"
+              class="w-full px-4 py-3 form-input rounded-lg focus:outline-none" required>
+            </div>
+
+            
+            <button type="submit"
+              class="w-full bg-primary hover:bg-blue-800 text-accent font-bold py-3 px-6 rounded-lg transition-all duration-300 btn-shine text-lg">
+              S'inscrire Maintenant
+            </button>
+            <p id="subscribeMsg" class="text-center mt-3 text-sm text-gray-700"></p>
+          </form>
+
+          <!-- ✅ Bouton Payer Maintenant -->
+          <div class="mt-6">
+            <button id="payerBtn"
+              class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 btn-shine text-lg">
+              <i class="fas fa-credit-card mr-2"></i> Payer maintenant
+            </button>
+            <p id="paymentMsg" class="text-center mt-3 text-sm text-gray-700"></p>
+          </div>
+        </div>
+
+        <!-- Section avantages -->
+        <div class="fade-in-up delay-3">
+          <h3 class="text-2xl font-bold text-primary mb-6">Pourquoi choisir BACE ?</h3>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-4">
+              <div class="bg-primary text-white p-2 rounded-full">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Enseignants Experts</h4>
+                <p class="text-gray-600">Nos enseignants sont sélectionnés pour leur expertise et leur pédagogie.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="bg-primary text-white p-2 rounded-full">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Suivi Personnalisé</h4>
+                <p class="text-gray-600">Chaque apprenant bénéficie d'un accompagnement adapté à ses besoins.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="bg-primary text-white p-2 rounded-full">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Ressources Digitales</h4>
+                <p class="text-gray-600">Accédez à notre plateforme en ligne avec des contenus exclusifs.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="bg-primary text-white p-2 rounded-full">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Résultats Garantis</h4>
+                <p class="text-gray-600">Nos méthodes pédagogiques ont fait leurs preuves depuis des années.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section témoignages -->
+    <section class="gradient-section py-16 mt-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-primary text-center mb-12">Ce que disent nos apprenants</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">S</div>
+              <div>
+                <h4 class="font-bold">Sami Ben Ahmed</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">"Grâce à BACE, j'ai pu améliorer mes notes en mathématiques de façon significative. Les enseignants sont très compétents et à l'écoute."</p>
+          </div>
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">N</div>
+              <div>
+                <h4 class="font-bold">Nour Haddad</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">"L'ambiance au centre est excellente. Les méthodes pédagogiques modernes m'ont aidé à mieux comprendre mes cours et à réussir mes examens."</p>
+          </div>
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">M</div>
+              <div>
+                <h4 class="font-bold">Mohamed Trabelsi</h4>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">"Je recommande vivement BACE à tous les élèves qui cherchent à améliorer leur niveau scolaire. Le suivi personnalisé fait toute la différence."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bouton Télécharger Brochure -->
+    <section class="py-12 text-center">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-primary mb-6">Prêt à commencer votre parcours d'excellence ?</h2>
+        <a href="/brochure/BACE_Brochure.pdf" download class="bg-primary hover:bg-blue-800 text-accent px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 btn-shine inline-flex items-center card-hover">
+          Télécharger notre brochure <i class="fas fa-download ml-2"></i>
+        </a>
+        <p class="mt-4 text-gray-600">Ou <a href="#contact" class="text-primary font-medium underline">contactez-nous</a> pour plus d'informations</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ MODAL POUR COMMENT S'INSCRIRE -->
+  <div id="modalInscription" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full p-8 rounded-xl shadow-2xl relative card-hover">
+      <button onclick="closeModal()" class="absolute top-4 right-6 text-gray-500 hover:text-red-600 text-2xl transition-colors duration-300">&times;</button>
+      <h2 class="text-2xl font-bold text-primary mb-6">📌 Procédure d'Admission</h2>
+      <p class="mb-6 text-gray-700">Pour intégrer le Bardo Academic Centre for Education :</p>
+      <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
+        <li>Remplissez le formulaire de candidature en ligne</li>
+        <li>Envoyez les documents requis (diplômes, CV, lettre de motivation)</li>
+        <li>Passez un entretien avec notre équipe pédagogique</li>
+        <li>Effectuez le paiement des frais de formation après acceptation</li>
+      </ul>
+      <div class="bg-gray-100 p-6 rounded-lg">
+        <h3 class="font-bold text-primary mb-3">Accès aux ressources pédagogiques :</h3>
+        <p class="mb-2"><i class="fas fa-circle text-secondary text-xs mr-2"></i> Après inscription, vous recevrez vos identifiants pour la plateforme</p>
+        <p><i class="fas fa-circle text-secondary text-xs mr-2"></i> Documents et vidéos disponibles sur <a href="/demande-acces.html" class="text-secondary font-medium underline">notre espace ressources</a></p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <a href="" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition-all duration-300 btn-shine">
+          Commencer l'inscription <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ FOOTER -->
+  <footer class="bg-primary text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">Bardo Academic Centre</h3>
+        <p class="text-gray-300">Centre d'excellence éducative offrant des formations innovantes et des ressources pédagogiques de qualité.</p>
+        <div class="flex space-x-4 mt-4">
+          <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-300 hover:text-accent text-xl transition-colors duration-300">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl transition-colors duration-300">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl transition-colors duration-300">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl transition-colors duration-300">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Formations</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Programmation & Digital</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Gestion & Commerce</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Sciences & Ingénierie</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Formations courtes</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="/demande-acces.html" class="text-gray-300 hover:text-accent footer-link">Ressources pédagogiques</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Admission</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Événements</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent footer-link">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div id="contact">
+        <h3 class="text-lg font-bold mb-4">Contact</h3>
+        <address class="not-italic text-gray-300 space-y-2">
+          <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i>84, rue des Orangers Le Bardo-Tunis</p>
+          <p><i class="fas fa-phone-alt mr-2 text-accent"></i> +216 97 898 050</p>
+          <p><i class="fas fa-envelope mr-2 text-accent"></i> bace.dg@gmail.com</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Lun-Ven: 8h-18h</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Samedi: 9h-15h</p>
+        </address>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400 text-sm">
+      <p>© <span id="year">2023</span> Bardo Academic Centre for Education. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Script d'ouverture/fermeture du menu mobile
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.getElementById('burgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      burger.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    });
+
+    function closeModal() {
+      document.getElementById("modalInscription").classList.add("hidden");
+    }
+    
+    // Ouvre modal quand clic sur nav
+    document.querySelectorAll('a[href="#inscription"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById("modalInscription").classList.remove("hidden");
+      });
+    });
+    
+    // Animation au défilement
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+
+    // Mise à jour de l'année dans le footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+     </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("subscribeForm");
+  const msg = document.getElementById("subscribeMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const prenom = form.prenom.value.trim();
+    const nom = form.nom.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const confirmPhone = form.confirmPhone.value.trim();
+
+    // 🔹 Vérification côté client
+    if (phone !== confirmPhone) {
+      msg.textContent = "❌ Les deux numéros de téléphone ne correspondent pas. Veuillez vérifier.";
+      msg.style.color = "red";
+
+      // Effacer uniquement le champ de confirmation
+      form.confirmPhone.value = "";
+      form.confirmPhone.focus();
+      return;
+    }
+
+    msg.textContent = "⏳ Envoi de votre inscription...";
+    msg.style.color = "gray";
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prenom, nom, email, phone, confirmPhone }),
+      });
+
+      const data = await res.json();
+
+      if (data.ok) {
+        msg.textContent = data.message;
+        msg.style.color = "green";
+        form.reset();
+      } else {
+        msg.textContent = data.message;
+        msg.style.color = "red";
+      }
+    } catch (err) {
+      console.error("Erreur réseau :", err);
+      msg.textContent = "Erreur de connexion au serveur.";
+      msg.style.color = "red";
+    }
+  });
+});
+</script>
+
+
+  <!-- Script Paiement GPG -->
+  <script src="./js/payment.js"></script>
+</body>
+</html>

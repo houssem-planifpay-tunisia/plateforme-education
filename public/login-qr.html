@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion avec QR - Bardo Academic Centre for Education</title>
+  <meta name="description" content="Connectez-vous à votre espace étudiant avec QR code pour accéder aux ressources pédagogiques BACE.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="/public/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --gray-50: #f9fafb;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',
+            secondary: '#E31937',
+            accent: '#FFCC00',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+  
+  <!-- ✅ HEADER + NAVIGATION -->
+  <header class="bg-white shadow-lg fixed w-full z-50 top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-4">
+        <div class="bg-white p-1 rounded-full shadow-md">
+          <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png" alt="Bardo Academic Centre Logo" class="h-16 w-auto md:h-20 transition-transform duration-300 hover:scale-105">
+        </div>
+        <div>
+          <span class="font-bold text-xl text-primary block leading-tight">Bienvenue</span>
+          <span class="text-sm font-medium text-white bg-blue-600 px-2 py-0.5 rounded-md shadow-sm">
+            Cher Apprenant
+          </span>
+        </div>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex space-x-2">
+        <a href="#objectif" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Objectif & Mission</a>
+        <a href="#pedagogie" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Pédagogie</a>
+        <a href="#centre" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Notre Centre</a>
+        <a href="#experience" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Expériences</a>
+        <a href="#demande-acces.html" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Documents & Vidéos</a>
+        <a href="#inscription" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Comment s'inscrire</a>
+        <a href="#contact" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors duration-300">Contact</a>
+      </nav>
+
+      <!-- Bouton / icônes -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-secondary" title="The Digital Spark on Facebook" aria-label="The Digital Spark on Facebook">
+          <i class="fab fa-facebook-f"></i>
+          <span class="sr-only">The Digital Spark on Facebook</span>
+        </a>
+        <a href="/login-qr.html" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm font-medium transition duration-300">
+          Espace Étudiant
+        </a>
+      </div>
+
+      <!-- ✅ Burger menu -->
+      <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-primary text-2xl focus:outline-none" aria-label="Ouvrir le menu" title="Ouvrir le menu">
+        <span class="sr-only">Ouvrir le menu</span>
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+    
+
+    <!-- ✅ Menu Mobile -->
+    <div id="mobileMenu" class="hidden px-4 pb-4 bg-white shadow-lg border-t md:hidden">
+      <nav class="flex flex-col space-y-2">
+        <a href="#objectif" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Objectif & Mission</a>
+        <a href="#pedagogie" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Pédagogie</a>
+        <a href="#centre" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Notre Centre</a>
+        <a href="#experience" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Expériences</a>
+        <a href="#demande-acces.html" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Documents & Vidéos</a>
+        <a href="#inscription" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Comment s'inscrire</a>
+        <a href="#contact" class="block py-2 text-sm hover:text-blue-600 transition-colors duration-300">Contact</a>
+        <a href="/login-qr.html" class="block py-2 text-sm font-semibold text-primary">Espace Étudiant</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENU PRINCIPAL (identique à votre version originale) -->
+  <main class="pt-40 pb-16 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Titre principal -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Connexion Espace Étudiant</h1>
+        <div class="w-20 h-1 bg-secondary mx-auto"></div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Accédez à votre espace personnel en scannant votre QR code ou en utilisant vos identifiants
+        </p>
+      </div>
+
+      <!-- Formulaire de connexion -->
+      <div class="max-w-md mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+        <form id="loginForm" class="space-y-6">
+          <!-- Champ Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-envelope text-primary mr-2"></i>Votre email
+            </label>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="exemple@email.com" 
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+              required>
+          </div>
+
+          <!-- Champ Code 4 chiffres -->
+          <div>
+            <label for="code4" class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-lock text-primary mr-2"></i>Votre code à 4 chiffres
+            </label>
+            <input 
+              type="text" 
+              name="code4" 
+              placeholder="1234" 
+              maxlength="4"
+              pattern="[0-9]{4}"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+              required>
+          </div>
+
+          <!-- Scanner QR Code -->
+          <div class="border-t pt-6">
+            <div class="text-center mb-4">
+              <h3 class="text-lg font-semibold text-primary mb-2">
+                <i class="fas fa-qrcode text-secondary mr-2"></i>Scanner votre QR Code
+              </h3>
+              <p class="text-sm text-gray-600">Placez votre QR code dans le cadre ci-dessous</p>
+            </div>
+            
+            <div id="reader" class="w-full mx-auto mb-4 border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50"></div>
+            <input type="hidden" name="qrValue" id="qrValue">
+            
+            <div class="text-center">
+              <button type="button" onclick="switchCamera()" class="text-sm text-primary hover:text-secondary font-medium">
+                <i class="fas fa-sync-alt mr-1"></i>Changer de caméra
+              </button>
+            </div>
+          </div>
+
+          <!-- Bouton de connexion -->
+          <button 
+            type="submit" 
+            class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+            <i class="fas fa-sign-in-alt mr-2"></i>
+            Se connecter
+          </button>
+
+          <!-- Message de statut -->
+          <p id="msg" class="text-center text-sm mt-4"></p>
+        </form>
+
+        <!-- Lien d'aide -->
+        <div class="mt-6 text-center">
+          <p class="text-sm text-gray-600">
+            Problème de connexion ? 
+            <a href="/index.html#contact" class="text-primary hover:text-secondary font-medium ml-1">
+              Contactez le support
+            </a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+<!-- ✅ MODAL POUR COMMENT S'INSCRIRE -->
+  <div id="modalInscription" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full p-8 rounded-xl shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-4 right-6 text-gray-500 hover:text-red-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-primary mb-6">📌 Procédure d'Admission</h2>
+      <p class="mb-6 text-gray-700">Pour intégrer le Bardo Academic Centre for Education :</p>
+      <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
+        <li>Remplissez le formulaire de candidature en ligne</li>
+        <li>Envoyez les documents requis (diplômes, CV, lettre de motivation)</li>
+        <li>Passez un entretien avec notre équipe pédagogique</li>
+        <li>Effectuez le paiement des frais de formation après acceptation</li>
+      </ul>
+      <div class="bg-gray-100 p-6 rounded-lg">
+        <h3 class="font-bold text-primary mb-3">Accès aux ressources pédagogiques :</h3>
+        <p class="mb-2"><i class="fas fa-circle text-secondary text-xs mr-2"></i> Après inscription, vous recevrez vos identifiants pour la plateforme</p>
+        <p><i class="fas fa-circle text-secondary text-xs mr-2"></i> Documents et vidéos disponibles sur <a href="/demande-acces.html" class="text-secondary font-medium underline">notre espace ressources</a></p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <a href="demande-acces.html" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300">
+          Commencer l'inscription <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- ✅ FOOTER (identique à index.html) -->
+  <footer class="bg-primary text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">Bardo Academic Centre</h3>
+        <p class="text-gray-300">Centre d'excellence éducative offrant des formations innovantes et des ressources pédagogiques de qualité.</p>
+        <div class="flex space-x-4 mt-4">
+          <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-accent text-xl" title="The Digital Spark on Facebook" aria-label="The Digital Spark on Facebook">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            <span class="sr-only">The Digital Spark on Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-accent text-xl" title="Suivez-nous sur Instagram" aria-label="Suivez-nous sur Instagram">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span class="sr-only">Suivez-nous sur Instagram</span>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-accent text-xl" title="Notre page LinkedIn" aria-label="Notre page LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+            <span class="sr-only">Notre page LinkedIn</span>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-accent text-xl" title="Notre chaîne YouTube" aria-label="Notre chaîne YouTube">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+            <span class="sr-only">Notre chaîne YouTube</span>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Formations</h3>
+        <ul class="space-y-2">
+          <li><a href="/index.html#formations" class="text-gray-300 hover:text-accent">Programmation & Digital</a></li>
+          <li><a href="/index.html#formations" class="text-gray-300 hover:text-accent">Gestion & Commerce</a></li>
+          <li><a href="/index.html#formations" class="text-gray-300 hover:text-accent">Sciences & Ingénierie</a></li>
+          <li><a href="/index.html#formations" class="text-gray-300 hover:text-accent">Formations courtes</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="/demande-acces.html" class="text-gray-300 hover:text-accent">Ressources pédagogiques</a></li>
+          <li><a href="/index.html#inscription" class="text-gray-300 hover:text-accent">Admission</a></li>
+          <li><a href="/index.html#experience" class="text-gray-300 hover:text-accent">Témoignages</a></li>
+          <li><a href="/index.html#contact" class="text-gray-300 hover:text-accent">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div id="contact">
+        <h3 class="text-lg font-bold mb-4">Contact</h3>
+        <address class="not-italic text-gray-300 space-y-2">
+          <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i>84, rue des Orangers Le Bardo-Tunis</p>
+          <p><i class="fas fa-phone-alt mr-2 text-accent"></i> +216 97 898 050</p>
+          <p><i class="fas fa-envelope mr-2 text-accent"></i> bace.dg@gmail.com</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Lun-Ven: 8h-18h</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Samedi: 9h-15h</p>
+        </address>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400 text-sm">
+      <p>© 2023 Bardo Academic Centre for Education. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+   <script>
+    function closeModal() {
+      document.getElementById("modalInscription").classList.add("hidden");
+    }
+    
+    // Ouvre modal quand clic sur nav
+    document.querySelectorAll('a[href="#inscription"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById("modalInscription").classList.remove("hidden");
+      });
+    });
+    
+    // Animation au défilement
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+  <!-- Scripts JavaScript (identique à votre version originale) -->
+  <script>
+    // Script d'ouverture/fermeture du menu mobile
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.getElementById('burgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      burger.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    });
+
+    // Fonction pour détecter si c'est un appareil mobile
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Démarrer le scanner QR
+    const html5QrCode = new Html5Qrcode("reader");
+    const qrValueInput = document.getElementById('qrValue');
+
+    Html5Qrcode.getCameras().then(devices => {
+      if (devices && devices.length) {
+        let cameraId;
+        
+        // Sur mobile, on cherche la caméra frontale
+        if (isMobileDevice()) {
+          const frontCamera = devices.find(device => 
+            device.label.toLowerCase().includes('front') || 
+            device.label.toLowerCase().includes('face') ||
+            device.label.includes('2')
+          );
+          
+          if (frontCamera) {
+            cameraId = frontCamera.id;
+          } else {
+            cameraId = devices[devices.length - 1].id;
+          }
+        } else {
+          cameraId = devices[0].id;
+        }
+
+        // Démarrer le scanner
+        html5QrCode.start(
+          cameraId,
+          { 
+            fps: 10, 
+            qrbox: { width: 250, height: 250 },
+            aspectRatio: 1.0
+          },
+          qrCodeMessage => {
+            qrValueInput.value = qrCodeMessage;
+            html5QrCode.stop();
+            document.getElementById('msg').innerText = "QR code détecté, vous pouvez valider.";
+            document.getElementById('msg').className = "text-center text-sm text-green-600";
+          },
+          errorMessage => {
+            // Erreur de scan, on continue
+          }
+        ).catch(err => {
+          console.error("Erreur démarrage caméra:", err);
+          document.getElementById('msg').innerText = "Erreur caméra: " + err.message;
+          document.getElementById('msg').className = "text-center text-sm text-red-600";
+        });
+
+      }
+    }).catch(err => {
+      console.error("Erreur accès caméras:", err);
+      document.getElementById('msg').innerText = "Impossible d'accéder à la caméra. Vérifiez les permissions.";
+      document.getElementById('msg').className = "text-center text-sm text-red-600";
+    });
+
+    // Envoi à l'API
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const msg = document.getElementById('msg');
+      
+      // Afficher un indicateur de chargement
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Connexion en cours...';
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('/api/login-with-qr', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: form.email.value,
+            code4: form.code4.value,
+            qrValue: form.qrValue.value
+          })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          msg.innerText = data.message;
+          msg.className = "text-center text-sm text-green-600";
+          
+          // Stocker le token d'authentification
+          if (data.token) {
+            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('userEmail', form.email.value);
+          }
+          
+          // Redirection vers la page sécurisée après un court délai
+          setTimeout(() => {
+            window.location.href = "/secure/documents.html";
+          }, 1500);
+          
+        } else {
+          msg.innerText = data.message || "Erreur de connexion";
+          msg.className = "text-center text-sm text-red-600";
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        msg.innerText = "Erreur réseau. Veuillez réessayer.";
+        msg.className = "text-center text-sm text-red-600";
+      } finally {
+        // Réactiver le bouton
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
+
+    let currentCameraIndex = 0;
+    let cameras = [];
+
+    function switchCamera() {
+      Html5Qrcode.getCameras().then(devices => {
+        cameras = devices;
+        currentCameraIndex = (currentCameraIndex + 1) % cameras.length;
+        
+        html5QrCode.stop().then(() => {
+          html5QrCode.start(
+            cameras[currentCameraIndex].id,
+            { fps: 10, qrbox: { width: 250, height: 250 } },
+            qrCodeMessage => {
+              qrValueInput.value = qrCodeMessage;
+              html5QrCode.stop();
+              document.getElementById('msg').innerText = "QR code détecté, vous pouvez valider.";
+              document.getElementById('msg').className = "text-center text-sm text-green-600";
+            }
+          );
+        });
+      });
+    }
+  </script>
+</body>
+</html>

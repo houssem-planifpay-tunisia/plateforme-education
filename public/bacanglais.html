@@ -1,0 +1,488 @@
+
+<!-- public/bacanglais.html -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Commander - Pack Révision Anglais BAC | BACE</title>
+
+  <!-- Tailwind + Font Awesome (mêmes que tes autres pages) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Fallback to your project CSS if exists -->
+  <link href="/dist/output.css" rel="stylesheet" />
+  <link href="/public/style.css" rel="stylesheet" />
+
+  <style>
+    :root{--primary:#003366;--accent:#FFCC00;--muted:#6b7280;--card:#ffffff}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:linear-gradient(180deg,#f7fbff,#ffffff);color:#071124}
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    .panel{background:var(--card);border-radius:14px;box-shadow:0 10px 30px rgba(8,30,66,0.08);overflow:hidden}
+    header{display:flex;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid #eef2f6;position:relative}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#1e40af);display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+    header h1{font-size:18px;margin:0}
+    .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;padding:24px}
+    .gallery{border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#f8fbff,#ffffff)}
+    .slides{position:relative;height:420px;background:#f1f5f9;display:flex;align-items:center;justify-content:center}
+    .slides img{max-width:100%;height:420px;object-fit:contain}
+    .thumbs{display:flex;gap:8px;padding:12px}
+    .thumbs img{height:72px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:.9;border:2px solid transparent}
+    .info{padding:8px 4px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--primary),#1e40af);color:white;font-weight:600;font-size:14px}
+    .title{font-size:22px;font-weight:700;margin:12px 0}
+    .price{font-size:28px;font-weight:800;color:var(--primary)}
+    .primary-btn{background:var(--primary);color:white;padding:12px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer;box-shadow:0 12px 30px rgba(3,64,102,0.12)}
+    .card{background:#fbfdff;border:1px solid #eef4ff;padding:18px;border-radius:12px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type=text],input[type=email],input[type=tel]{width:100%;padding:10px;border-radius:8px;border:1px solid #dbe7f6;background:white}
+    .profile-select{display:flex;gap:12px;align-items:center;margin-top:6px}
+    .profile-card{flex:1;padding:10px;border-radius:10px;border:1px solid #e6eefb;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .18s}
+    .profile-card img{width:46px;height:46px;object-fit:cover;border-radius:8px}
+    .profile-card strong{display:block}
+    .profile-card small{color:var(--muted)}
+    .profile-card.selected{border-color:var(--primary);box-shadow:0 10px 25px rgba(3,64,102,0.08);transform:translateY(-4px)}
+    /* Upload */
+    .upload-area{border:2px dashed #e6eefb;padding:18px;border-radius:10px;text-align:center;color:var(--muted);cursor:pointer;transition:all .12s; background:linear-gradient(180deg,#ffffff,#fbfdff)}
+    .upload-area.dragover{background:linear-gradient(90deg,rgba(3,64,102,0.03),transparent);border-color:var(--primary)}
+    .file-preview{display:flex;align-items:center;gap:12px;margin-top:12px;padding:10px;border-radius:8px;border:1px solid #eef4fb;background:#fff}
+    .file-preview img{width:72px;height:72px;object-fit:cover;border-radius:6px}
+    .progress{height:8px;background:#eef4fb;border-radius:8px;overflow:hidden;margin-top:8px}
+    .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--primary),#1e40af);transition:width .2s}
+    .small-note{font-size:13px;color:var(--muted);margin-top:8px}
+    footer{padding:18px 22px;border-top:1px solid #eef2f6;text-align:right}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.slides{height:320px}.slides img{height:320px}}
+    /* header / nav mobile similar to your other pages */
+    .nav-desktop{display:flex;gap:8px}
+    @media (max-width:768px){.nav-desktop{display:none}}
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+
+  <!-- Header (copié/adapté de demande-acces/login-qr pour cohérence) -->
+  <header class="bg-white shadow-lg fixed w-full z-50 top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-4">
+        <div class="bg-white p-1 rounded-full shadow-md">
+          <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png" alt="logo" class="h-14 w-auto">
+        </div>
+        <div>
+          <span class="font-bold text-lg text-[var(--primary)] block leading-tight">Bardo Academic Centre</span>
+          <span class="text-sm text-gray-500 block">Pack Révision Anglais - BAC</span>
+        </div>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/demande-acces.html" class="px-3 py-2 text-sm font-medium hover:text-blue-600 transition-colors">Formations</a>
+        <a href="/demande-acces.html#contact" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Contact</a>
+        <a href="/login-qr.html" class="bg-[var(--primary)] text-white px-4 py-2 rounded text-sm font-medium">Espace Étudiant</a>
+      </nav>
+
+      <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-[var(--primary)] text-2xl focus:outline-none" aria-label="Ouvrir le menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden px-4 pb-4 bg-white shadow-lg border-t md:hidden">
+      <nav class="flex flex-col space-y-2">
+        <a href="/demande-acces.html" class="block py-2 text-sm hover:text-blue-600">Formations</a>
+        <a href="/demande-acces.html#contact" class="block py-2 text-sm hover:text-blue-600">Contact</a>
+        <a href="/login-qr.html" class="block py-2 text-sm font-semibold text-[var(--primary)]">Espace Étudiant</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container" style="padding-top:100px">
+    <div class="panel">
+
+      <div class="grid">
+        <!-- LEFT: Galerie + description -->
+        <div>
+          <div class="gallery">
+            <div class="slides" id="slides">
+              <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png" alt="Couverture livre" id="mainImage">
+            </div>
+            <div class="thumbs" id="thumbs">
+              <img src="/images/book-cover-1.jpg" alt="thumb1" onerror="this.style.display='none'">
+              <img src="/images/book-page-sample.jpg" alt="thumb2" onerror="this.style.display='none'">
+            </div>
+          </div>
+
+          <div class="info">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span class="badge">Edition 2025</span>
+              <div style="text-align:right">
+                <div class="small-note">Prix magasin <s>85 DT</s></div>
+                <div class="price"><span id="priceValue">34</span> <small>DT</small></div>
+              </div>
+            </div>
+
+            <div class="title">
+              Pack Révision Anglais - BAC
+              <div style="font-size:15px;color:var(--primary);font-weight:600;margin-top:6px">Grammaire • Vocabulaire • Examens corrigés</div>
+            </div>
+
+            <p class="small-note">Prépare efficacement le BAC avec des fiches synthétiques, exercices corrigés et une simulation d'examen. Livraison postale ou PDF instantané.</p>
+
+            <div class="mt-4 flex gap-3">
+              <button class="primary-btn" id="orderBtn">Commander</button>
+              <button class="primary-btn" id="payOnlineBtn" style="background:#10b981">Payer en ligne</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Formulaire & Upload -->
+        <div>
+          <form id="orderForm" class="card" enctype="multipart/form-data" novalidate>
+            <h3 class="text-xl font-semibold mb-3">Votre commande</h3>
+
+            <!-- Profil -->
+            <div>
+              <label>Profil</label>
+              <div class="profile-select" id="profiles">
+                <label class="profile-card" data-role="eleve">
+                  <input type="radio" name="profile" value="eleve" style="display:none">
+                  <img src="/images/student.jpg" alt="élève" onerror="this.style.display='none'">
+                  <div>
+                    <strong>Élève</strong>
+                    <small class="small-note">Prix préférentiel</small>
+                  </div>
+                </label>
+                <label class="profile-card" data-role="enseignant">
+                  <input type="radio" name="profile" value="enseignant" style="display:none">
+                  <img src="/images/teacher.jpg" alt="enseignant" onerror="this.style.display='none'">
+                  <div>
+                    <strong>Enseignant</strong>
+                    <small class="small-note">Prix professionnel</small>
+                  </div>
+                </label>
+              </div>
+              <div class="small-note mt-2">Prix élève: <strong>34 DT</strong> — Prix enseignant: <strong>70 DT</strong></div>
+            </div>
+
+            <hr style="margin:12px 0;border:none;border-top:1px solid #eef4fb">
+
+            <!-- Infos client -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="prenom">Prénom *</label>
+                <input id="prenom" name="prenom" type="text" required>
+              </div>
+              <div>
+                <label for="nom">Nom *</label>
+                <input id="nom" name="nom" type="text" required>
+              </div>
+              <div>
+                <label for="telephone">Téléphone *</label>
+                <input id="telephone" name="telephone" type="tel" placeholder="+216 ..." required>
+              </div>
+              <div>
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="email" required>
+              </div>
+            </div>
+
+            <div style="margin-top:12px">
+              <label for="lycee">Lycée (optionnel)</label>
+              <input id="lycee" name="lycee" type="text" placeholder="Nom du lycée (facultatif)">
+            </div>
+
+            <!-- Upload preuve -->
+            <div style="margin-top:14px">
+              <label>Preuve de paiement (obligatoire si paiement hors-ligne)</label>
+
+              <div id="upload" class="upload-area" tabindex="0">
+                <div id="uploadContent">
+                  <i class="fas fa-cloud-upload-alt fa-2x" style="color:var(--primary)"></i>
+                  <div style="margin-top:8px;font-weight:600;color:var(--primary)">Cliquez ou glissez-déposez votre capture / reçu</div>
+                  <div class="small-note">Formats acceptés: JPG, PNG, PDF — Max 5 MB</div>
+                </div>
+              </div>
+
+              <input id="fileInput" name="paymentProof" type="file" accept="image/*,application/pdf" style="display:none" required>
+
+              <div id="fileArea" style="display:none">
+                <div class="file-preview" id="filePreview">
+                  <img id="previewImg" src="" alt="preview" style="display:none">
+                  <div style="flex:1">
+                    <div id="fName" style="font-weight:600"></div>
+                    <div id="fSize" class="small-note"></div>
+                    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <button type="button" id="replaceFile" class="primary-btn" style="background:#f59e0b;padding:6px 10px;font-size:13px">Remplacer</button>
+                    <button type="button" id="removeFile" class="primary-btn" style="background:#ef4444;padding:6px 10px;font-size:13px">Supprimer</button>
+                  </div>
+                </div>
+              </div>
+              <div id="uploadMsg" class="small-note"></div>
+            </div>
+
+            <!-- RIB -->
+            <div class="rib" style="margin-top:12px;padding:10px;background:#fff8ec;border-left:4px solid #ffd28a;border-radius:8px">
+              <h4 style="margin:0 0 6px 0">RIB / Détails Banque</h4>
+              <p>Banque : <strong>Banque XYZ Tunisie</strong></p>
+              <p>Titulaire : <strong>Association/Entreprise Plateforme</strong></p>
+              <p>RIB : <strong>TN59 3000 0000 0000 0000 0000</strong></p>
+              <p class="small-note">Après envoi de la preuve, nous vérifierons et validerons votre commande. Vous recevrez une confirmation par email.</p>
+            </div>
+
+            <!-- Résumé -->
+            <div class="summary" style="margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px solid #eef5ff">
+              <div style="display:flex;justify-content:space-between;padding:6px 0"><div>Prix unitaire</div><div><strong id="summaryPrice">34 DT</strong></div></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0"><div>Quantité</div><div><strong>1</strong></div></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-weight:700"><div>Total</div><div><strong id="summaryTotal">34 DT</strong></div></div>
+            </div>
+
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <button type="submit" id="submitBtn" class="primary-btn" style="flex:1">Envoyer la commande</button>
+            </div>
+            <div id="status" class="small-note" style="margin-top:10px"></div>
+          </form>
+        </div>
+      </div>
+
+      <footer style="padding:18px 22px;border-top:1px solid #eef2f6;text-align:center">
+        <small style="color:var(--muted)">© Bardo Academic Centre — Plateforme <span id="curYear"></span></small>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT: interactions, upload avancé, envoi avec progression -->
+  <script>
+    // Header mobile menu
+    document.getElementById('burgerBtn').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+    document.getElementById('curYear').textContent = new Date().getFullYear();
+
+    // Price logic & profile selection
+    const profileCards = document.querySelectorAll('.profile-card');
+    const prices = { eleve: 34, enseignant: 70 };
+    const priceValue = document.getElementById('priceValue');
+    const summaryPrice = document.getElementById('summaryPrice');
+    const summaryTotal = document.getElementById('summaryTotal');
+
+    profileCards.forEach(card => {
+      card.addEventListener('click', () => {
+        profileCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        card.querySelector('input').checked = true;
+        const role = card.dataset.role;
+        const p = prices[role];
+        priceValue.textContent = p;
+        summaryPrice.textContent = p + ' DT';
+        summaryTotal.textContent = p + ' DT';
+      });
+    });
+
+    // Upload zone
+    const upload = document.getElementById('upload');
+    const fileInput = document.getElementById('fileInput');
+    const fileArea = document.getElementById('fileArea');
+    const previewImg = document.getElementById('previewImg');
+    const fName = document.getElementById('fName');
+    const fSize = document.getElementById('fSize');
+    const removeFileBtn = document.getElementById('removeFile');
+    const replaceFileBtn = document.getElementById('replaceFile');
+    const uploadMsg = document.getElementById('uploadMsg');
+    const progressBar = document.getElementById('progressBar');
+
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+    const ALLOWED = ['image/png','image/jpeg','image/jpg','application/pdf'];
+
+    upload.addEventListener('click', () => fileInput.click());
+
+    upload.addEventListener('dragover', e => {
+      e.preventDefault();
+      upload.classList.add('dragover');
+    });
+    upload.addEventListener('dragleave', () => upload.classList.remove('dragover'));
+    upload.addEventListener('drop', e => {
+      e.preventDefault();
+      upload.classList.remove('dragover');
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelection();
+      }
+    });
+
+    fileInput.addEventListener('change', handleFileSelection);
+
+    function handleFileSelection() {
+      const file = fileInput.files[0];
+      if (!file) return clearFileState();
+
+      if (!ALLOWED.includes(file.type)) {
+        uploadMsg.textContent = 'Format non-autorisé. Autorisé: JPG, PNG, PDF.';
+        fileInput.value = '';
+        return;
+      }
+      if (file.size > MAX_SIZE) {
+        uploadMsg.textContent = 'Fichier trop volumineux (max 5 MB).';
+        fileInput.value = '';
+        return;
+      }
+
+      // Preview
+      fName.textContent = file.name;
+      fSize.textContent = Math.round(file.size / 1024) + ' KB';
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          previewImg.src = reader.result;
+          previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewImg.style.display = 'none';
+      }
+
+      fileArea.style.display = 'block';
+      uploadMsg.textContent = '';
+      progressBar.style.width = '0%';
+    }
+
+    function clearFileState() {
+      fileInput.value = '';
+      previewImg.src = '';
+      previewImg.style.display = 'none';
+      fName.textContent = '';
+      fSize.textContent = '';
+      fileArea.style.display = 'none';
+      uploadMsg.textContent = '';
+      progressBar.style.width = '0%';
+    }
+
+    removeFileBtn.addEventListener('click', () => {
+      if (!confirm('Supprimer la preuve sélectionnée ?')) return;
+      clearFileState();
+    });
+    replaceFileBtn.addEventListener('click', () => fileInput.click());
+
+    // Submit form with progress using XHR
+    const form = document.getElementById('orderForm');
+    const statusEl = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      statusEl.textContent = '';
+      statusEl.style.color = '';
+
+      // Validate profile
+      const selected = document.querySelector('.profile-card.selected');
+      if (!selected) {
+        statusEl.textContent = 'Choisissez un profil.';
+        statusEl.style.color = 'crimson';
+        return;
+      }
+      if (!fileInput.files.length) {
+        statusEl.textContent = 'Ajoutez la preuve (si vous avez choisi le paiement offline).';
+        statusEl.style.color = 'crimson';
+        return;
+      }
+
+      // Build FormData
+      const fd = new FormData();
+      fd.append('profile', selected.dataset.role);
+      fd.append('prenom', form.prenom.value || '');
+      fd.append('nom', form.nom.value || '');
+      fd.append('telephone', form.telephone.value || '');
+      fd.append('email', form.email.value || '');
+      fd.append('lycee', form.lycee.value || '');
+      // price
+      const priceNum = prices[selected.dataset.role] || 34;
+      fd.append('price', priceNum);
+      // file
+      fd.append('paymentProof', fileInput.files[0]);
+
+      // XHR
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/orders', true);
+
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+          const percent = Math.round((e.loaded / e.total) * 100);
+          progressBar.style.width = percent + '%';
+        }
+      };
+      xhr.onloadstart = function() {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours...';
+        statusEl.textContent = 'Envoi de la preuve...';
+      };
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer la commande';
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+              const json = JSON.parse(xhr.responseText);
+              if (json.ok) {
+                statusEl.innerHTML = '✅ Commande enregistrée. Réf: <strong>' + (json.orderId || json._id || '') + '</strong>';
+                statusEl.style.color = 'green';
+                // Reset form and preview
+                form.reset();
+                clearFileState();
+                profileCards.forEach(c => c.classList.remove('selected'));
+                priceValue.textContent = 34;
+                summaryPrice.textContent = '34 DT';
+                summaryTotal.textContent = '34 DT';
+              } else {
+                statusEl.textContent = json.message || 'Erreur lors de la création de la commande.';
+                statusEl.style.color = 'crimson';
+              }
+            } catch (err) {
+              statusEl.textContent = 'Réponse serveur inattendue.';
+              statusEl.style.color = 'crimson';
+            }
+          } else {
+            statusEl.textContent = 'Erreur réseau ou serveur (' + xhr.status + ').';
+            statusEl.style.color = 'crimson';
+          }
+        }
+      };
+      xhr.onerror = function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer la commande';
+        statusEl.textContent = 'Erreur réseau lors de l\'envoi.';
+        statusEl.style.color = 'crimson';
+      };
+
+      xhr.send(fd);
+    });
+
+    // Order / Payment button actions
+    document.getElementById('orderBtn').addEventListener('click', function() {
+      // Scroll to form
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    document.getElementById('payOnlineBtn').addEventListener('click', function() {
+      // Redirection douce vers page de paiement en ligne.
+      // Option: changez la cible si vous avez une page Stripe dédiée (/paiement.html ou /checkout)
+      window.location.href = '/demande-acces.html#payerBtn';
+      // ou: window.location.href = '/paiement.html';
+    });
+
+    // thumbs click (change main image if exist)
+    document.querySelectorAll('#thumbs img').forEach(img => {
+      img.addEventListener('click', () => {
+        const src = img.src;
+        if (src) document.getElementById('mainImage').src = src;
+      });
+    });
+
+    // Accessibility: allow upload area keyboard activation
+    upload.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') fileInput.click();
+    });
+  </script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+

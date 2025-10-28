@@ -28,3 +28,9 @@
 .carousel-item {
   cursor: pointer;
 }
+#carouselTrack {
+  scroll-behavior: smooth;
+}
+.carousel-item:hover {
+  animation-play-state: paused !important;
+}

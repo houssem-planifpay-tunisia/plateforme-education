@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BACE - Coming Soon</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome pour les icônes -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="/dist/output.css" rel="stylesheet">
+    <link href="/dist/output.css" rel="stylesheet">
+  <link href="/public/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        :root {
+            --primary: #3b82f6;
+            --gray-50: #f9fafb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+       
+        .bg-gray-50 {
+            background-color: var(--gray-50);
+        }
+        
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        
+        .max-w-7xl {
+            max-width: 80rem;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .sm\:px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .lg\:px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .group:hover .pause-animation {
+            animation-play-state: paused;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .space-x-6 > * + * {
+            margin-left: 1.5rem;
+        }
+        
+        .w-max {
+            width: max-content;
+        }
+        
+        .carousel-track {
+            animation: scroll 40s linear infinite;
+        }
+        
+        .pause-animation {
+            animation-play-state: running;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-288px * 7 - 1.5rem * 7));
+            }
+        }
+        
+        .carousel-item {
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+        
+        .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .w-72 {
+            width: 18rem;
+        }
+        
+        .flex-shrink-0 {
+            flex-shrink: 0;
+        }
+        
+        .cursor-pointer {
+            cursor: pointer;
+        }
+        
+        .w-full {
+            width: 100%;
+        }
+        
+        .h-56 {
+            height: 14rem;
+        }
+        
+        .object-cover {
+            object-fit: cover;
+        }
+        
+        .transition-transform {
+            transition-property: transform;
+        }
+        
+        .duration-500 {
+            transition-duration: 500ms;
+        }
+        
+        .absolute {
+            position: absolute;
+        }
+        
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .bg-gradient-to-t {
+            background-image: linear-gradient(to top, var(--tw-gradient-stops));
+        }
+        
+        .from-black\/70 {
+            --tw-gradient-from: rgba(0, 0, 0, 0.7);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
+        }
+        
+        .via-black\/40 {
+            --tw-gradient-stops: var(--tw-gradient-from), rgba(0, 0, 0, 0.4), var(--tw-gradient-to, rgba(0, 0, 0, 0));
+        }
+        
+        .to-transparent {
+            --tw-gradient-to: transparent;
+        }
+        
+        .items-end {
+            align-items: flex-end;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .transition {
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+        }
+        
+        .text-white {
+            color: white;
+        }
+        
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        
+        .fixed {
+            position: fixed;
+        }
+        
+        .bg-black\/90 {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .z-50 {
+            z-index: 50;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .lightbox-image {
+            max-width: 95vw;
+            max-height: 95vh;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        
+        /* Navigation arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .group:hover .carousel-nav {
+            opacity: 1;
+        }
+        
+        .carousel-prev {
+            left: 10px;
+        }
+        
+        .carousel-next {
+            right: 10px;
+        }
+        
+        /* Indicateurs de progression */
+        .carousel-progress {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: background-color 0.3s ease;
+        }
+        
+        .progress-dot.active {
+            background-color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .carousel-track {
+                animation-duration: 25s;
+            }
+            
+            .carousel-nav {
+                display: none;
+            }
+        }
+    </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',
+            secondary: '#E31937',
+            accent: '#FFCC00',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta name="description" content="BACE - Centre Académique Éducatif à Tunis. Formations, ressources pédagogiques et programmes innovants pour la réussite de chaque apprenant.">
+<meta name="keywords" content="éducation, bardo, formation, soutien scolaire, BACE, centre académique, Tunisie">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="BACE - Bardo Academic Centre for Education">
+<meta property="og:description" content="Votre réussite est notre objectif. Découvrez nos programmes éducatifs.">
+<meta property="og:image" content="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png">
+<meta property="og:url" content="https://bace.tn/demande-acces.html">
+<meta name="twitter:card" content="summary_large_image">
+
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-300 min-h-screen flex flex-col justify-between font-sans">
+<!-- ✅ HEADER + NAVIGATION avec menu burger -->
+<header class="bg-white shadow-lg fixed w-full z-50 top-0">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-4">
+      <div class="bg-white p-1 rounded-full shadow-md">
+        <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png"
+             alt="Bardo Academic Centre Logo"
+             class="h-16 w-auto md:h-20 transition-transform duration-300 hover:scale-105">
+      </div>
+      <div>
+        <span class="font-bold text-xl text-primary block leading-tight">Bienvenue</span>
+        <span class="text-sm font-medium text-white bg-blue-600 px-2 py-0.5 rounded-md shadow-sm">
+          Cher Apprenant
+        </span>
+      </div>
+    </a>
+
+    <!-- Menu Desktop -->
+    <nav class="hidden md:flex space-x-2">
+      <a href="#objectif" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Objectif & Mission</a>
+      <a href="#pedagogie" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Pédagogie</a>
+      <a href="#centre" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Notre Centre</a>
+      <a href="#experience" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Expériences</a>
+      <a href="/demande-acces.html" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Documents & Vidéos</a>
+      <a href="#inscription" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Comment s’inscrire</a>
+      <a href="#contact" class="px-3 py-2 text-sm font-medium hover:text-blue-600">Contact</a>
+    </nav>
+
+    <!-- Bouton / icônes -->
+    <div class="hidden md:flex items-center space-x-4">
+      <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-600 hover:text-secondary">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="/login-qr.html"
+         class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm font-medium transition duration-300">
+        Espace Étudiant
+      </a>
+    </div>
+
+    <!-- ✅ Burger menu -->
+    <button id="burgerBtn" class="md:hidden text-gray-600 hover:text-primary text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- ✅ Menu Mobile -->
+  <div id="mobileMenu" class="hidden px-4 pb-4 bg-white shadow-lg border-t md:hidden">
+    <nav class="flex flex-col space-y-2">
+      <a href="#objectif" class="block py-2 text-sm hover:text-blue-600">Objectif & Mission</a>
+      <a href="#pedagogie" class="block py-2 text-sm hover:text-blue-600">Pédagogie</a>
+      <a href="#centre" class="block py-2 text-sm hover:text-blue-600">Notre Centre</a>
+      <a href="#experience" class="block py-2 text-sm hover:text-blue-600">Expériences</a>
+      <a href="/demande-acces.html" class="block py-2 text-sm hover:text-blue-600">Documents & Vidéos</a>
+      <a href="#inscription" class="block py-2 text-sm hover:text-blue-600">Comment s’inscrire</a>
+      <a href="#contact" class="block py-2 text-sm hover:text-blue-600">Contact</a>
+      <a href="/login-qr.html" class="block py-2 text-sm font-semibold text-primary">Espace Étudiant</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Script d’ouverture/fermeture du menu mobile
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  });
+</script>
+
+  <main class="text-center p-6 max-w-4xl mx-auto flex-grow">
+    
+    <!-- Logo avec animation de vagues -->
+            <div class="logo-animation mb-2 mx-auto" style="width: 400px; height: 100px;">
+  <svg viewBox="0 0 600 120" width="100%" height="100%">
+    <defs>
+      <!-- Dégradé été harmonisé -->
+      <linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="0%">
+        <!-- Jaune sable -->
+        <stop offset="0%" stop-color="#FFD94C" />
+        <!-- Turquoise clair -->
+        <stop offset="35%" stop-color="#5FD1B3" />
+        <!-- Bleu ciel -->
+        <stop offset="65%" stop-color="#4FA8ED" />
+        <!-- Bleu océan profond -->
+        <stop offset="100%" stop-color="#003E92" />
+      </linearGradient>
+
+      <!-- Filtre glow clair -->
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <clipPath id="clip-text">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+              font-size="80" font-weight="800" letter-spacing="2"
+              filter="url(#glow)">
+          BACE - Tunis
+        </text>
+      </clipPath>
+    </defs>
+
+    <g clip-path="url(#clip-text)">
+      <rect width="600" height="120" fill="url(#ocean)" />
+
+      <g class="wave1">
+        <g transform="translate(0, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#b3e0ff" fill-opacity="0.9" />
+        </g>
+        <g transform="translate(600, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#b3e0ff" fill-opacity="0.9" />
+        </g>
+      </g>
+
+      <g class="wave2">
+        <g transform="translate(0, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#66ccff" fill-opacity="0.8" />
+        </g>
+        <g transform="translate(600, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#66ccff" fill-opacity="0.8" />
+        </g>
+      </g>
+
+      <g class="wave3">
+        <g transform="translate(0, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#0099e6" fill-opacity="0.7" />
+        </g>
+        <g transform="translate(600, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#0099e6" fill-opacity="0.7" />
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+
+
+    <!-- Formulaire d'inscription -->
+<form id="subscribeForm" class="mt-6 max-w-md mx-auto bg-white p-4 rounded-lg shadow-md">
+
+  <div class="mb-4">
+  <input type="text" name="prenom" placeholder="Votre prénom"
+    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+</div>
+<div class="mb-4">
+  <input type="text" name="nom" placeholder="Votre nom"
+    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+</div>
+
+  <div class="mb-4">
+    <input type="email" name="email" placeholder="Votre email"
+      class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+  </div>
+  <div class="mb-4">
+    <input type="tel" name="phone" placeholder="Votre téléphone"
+      class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+  </div>
+  <button type="submit"
+    class="bg-blue-700 hover:bg-blue-800 text-yellow-300 px-6 py-2 rounded-md font-bold text-lg transition duration-300 w-full">
+    S’inscrire
+  </button>
+  <p id="subscribeMsg" class="text-center mt-3 text-sm text-gray-700"></p>
+</form>
+<!-- ✅ Bouton Payer Maintenant -->
+<div class="mt-6 max-w-md mx-auto text-center">
+  <button id="payerBtn"
+    class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold text-lg shadow-md transition duration-300 w-full">
+    <i class="fas fa-credit-card mr-2"></i> Payer maintenant
+  </button>
+  <p id="paymentMsg" class="text-center mt-3 text-sm text-gray-700"></p>
+</div>
+
+
+    <!-- Note admin -->
+    <small class="mt-4 block text-gray-500 text-sm">Si vous êtes membre de l'équipe, connectez-vous via <code>/admin</code> (ou utilisez votre secret de dev).</small>
+
+    <!-- Bouton Télécharger Brochure -->
+    <div class="mt-12">
+      <a href="/brochure/BACE_Brochure.pdf" download class="bg-blue-700 hover:bg-blue-800 text-yellow-300 px-8 py-4 rounded-md font-bold text-lg transition duration-300 inline-flex items-center">
+        Demander l'emploi du temps <i class="fas fa-download ml-2"></i>
+      </a>
+    </div>
+  
+  </main>
+
+  <!-- ✅ MODAL POUR COMMENT S'INSCRIRE -->
+  <div id="modalInscription" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full p-8 rounded-xl shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-4 right-6 text-gray-500 hover:text-red-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-primary mb-6">📌 Procédure d'Admission</h2>
+      <p class="mb-6 text-gray-700">Pour intégrer le Bardo Academic Centre for Education :</p>
+      <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
+        <li>Remplissez le formulaire de candidature en ligne</li>
+        <li>Envoyez les documents requis (diplômes, CV, lettre de motivation)</li>
+        <li>Passez un entretien avec notre équipe pédagogique</li>
+        <li>Effectuez le paiement des frais de formation après acceptation</li>
+      </ul>
+      <div class="bg-gray-100 p-6 rounded-lg">
+        <h3 class="font-bold text-primary mb-3">Accès aux ressources pédagogiques :</h3>
+        <p class="mb-2"><i class="fas fa-circle text-secondary text-xs mr-2"></i> Après inscription, vous recevrez vos identifiants pour la plateforme</p>
+        <p><i class="fas fa-circle text-secondary text-xs mr-2"></i> Documents et vidéos disponibles sur <a href="/demande-acces.html" class="text-secondary font-medium underline">notre espace ressources</a></p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <a href="" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-md font-medium transition duration-300">
+          Commencer l'inscription <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+<!-- ✅ FOOTER -->
+  <footer class="bg-primary text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">Bardo Academic Centre</h3>
+        <p class="text-gray-300">Centre d'excellence éducative offrant des formations innovantes et des ressources pédagogiques de qualité.</p>
+        <div class="flex space-x-4 mt-4">
+          <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-accent text-xl">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Formations</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300 hover:text-accent">Programmation & Digital</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Gestion & Commerce</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Sciences & Ingénierie</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Formations courtes</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-bold mb-4">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="/demande-acces.html" class="text-gray-300 hover:text-accent">Ressources pédagogiques</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Admission</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Événements</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-accent">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div id="contact">
+        <h3 class="text-lg font-bold mb-4">Contact</h3>
+        <address class="not-italic text-gray-300 space-y-2">
+          <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i>84 rue des Orangers, le Bardo-Tunis</p>
+          <p><i class="fas fa-phone-alt mr-2 text-accent"></i> +216 97 898 050</p>
+          <p><i class="fas fa-envelope mr-2 text-accent"></i> bace.dg@gmail.com</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Lun-Ven: 8h-18h</p>
+          <p><i class="fas fa-clock mr-2 text-accent"></i> Samedi: 9h-15h</p>
+        </address>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400 text-sm">
+      <p>© 2023 Bardo Academic Centre for Education. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script>
+    function closeModal() {
+      document.getElementById("modalInscription").classList.add("hidden");
+    }
+    
+    // Ouvre modal quand clic sur nav
+    document.querySelectorAll('a[href="#inscription"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById("modalInscription").classList.remove("hidden");
+      });
+    });
+    
+    // Animation au défilement
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+  
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+<!-- Script Paiement GPG -->
+<script src="./js/payment.js"></script>
+
+<script>
+  document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+
+  try {
+    // Désactiver le bouton pendant l'envoi
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Inscription en cours...';
+
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prenom: form.prenom.value,
+        nom: form.nom.value,
+        email: form.email.value,
+        phone: form.phone.value
+      })
+    });
+
+    const data = await res.json();
+    const msg = document.getElementById('subscribeMsg');
+    
+    if (res.ok) {
+      msg.style.color = 'green';
+      msg.innerHTML = data.message;
+      
+      // Afficher quand même le code et QR en backup
+      if (data.code4 && data.qrCode) {
+        msg.innerHTML += `<br><strong>Votre code (gardez-le !) :</strong> ${data.code4}<br>`;
+        msg.innerHTML += `<img src="${data.qrCode}" alt="QR Code" style="margin-top:10px;max-width:150px;">`;
+        msg.innerHTML += `<p style="font-size: 12px; color: #666;">Un email avec vos identifiants vous a été envoyé.</p>`;
+      }
+    } else {
+      msg.style.color = 'red';
+      msg.innerHTML = data.message;
+    }
+
+    form.reset();
+    
+  } catch (error) {
+    const msg = document.getElementById('subscribeMsg');
+    msg.style.color = 'red';
+    msg.innerHTML = 'Erreur de connexion. Veuillez réessayer.';
+  } finally {
+    // Réactiver le bouton
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+  }
+});
+
+</script>
+
+
+</body>
+</html>

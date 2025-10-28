@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BACE - Coming Soon</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome pour les icônes -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="/css/coming-soon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-300 min-h-screen flex flex-col justify-between font-sans">
+
+  <main class="text-center p-6 max-w-4xl mx-auto flex-grow">
+    
+    <!-- Logo animé -->
+    <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/logo-plateforme.png" alt="BACE Logo" class="mx-auto h-24 w-auto md:h-32 transition-transform duration-500 hover:scale-110">
+
+
+    <!-- Logo avec animation de vagues -->
+            <div class="logo-animation mb-2 mx-auto" style="width: 400px; height: 100px;">
+  <svg viewBox="0 0 600 120" width="100%" height="100%">
+    <defs>
+      <!-- Dégradé été harmonisé -->
+      <linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="0%">
+        <!-- Jaune sable -->
+        <stop offset="0%" stop-color="#FFD94C" />
+        <!-- Turquoise clair -->
+        <stop offset="35%" stop-color="#5FD1B3" />
+        <!-- Bleu ciel -->
+        <stop offset="65%" stop-color="#4FA8ED" />
+        <!-- Bleu océan profond -->
+        <stop offset="100%" stop-color="#003E92" />
+      </linearGradient>
+
+      <!-- Filtre glow clair -->
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <clipPath id="clip-text">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+              font-size="80" font-weight="800" letter-spacing="2"
+              filter="url(#glow)">
+          BACE - Tunis
+        </text>
+      </clipPath>
+    </defs>
+
+    <g clip-path="url(#clip-text)">
+      <rect width="600" height="120" fill="url(#ocean)" />
+
+      <g class="wave1">
+        <g transform="translate(0, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#b3e0ff" fill-opacity="0.9" />
+        </g>
+        <g transform="translate(600, 40)">
+          <path d="M0,30 C 75,55 150,0 225,30 C 300,55 375,0 450,30 C 525,55 600,0 675,30 L675,80 L0,80 Z"
+                fill="#b3e0ff" fill-opacity="0.9" />
+        </g>
+      </g>
+
+      <g class="wave2">
+        <g transform="translate(0, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#66ccff" fill-opacity="0.8" />
+        </g>
+        <g transform="translate(600, 50)">
+          <path d="M0,25 C 90,45 180,-5 270,25 C 360,45 450,-5 540,25 C 630,45 720,-5 810,25 L810,80 L0,80 Z"
+                fill="#66ccff" fill-opacity="0.8" />
+        </g>
+      </g>
+
+      <g class="wave3">
+        <g transform="translate(0, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#0099e6" fill-opacity="0.7" />
+        </g>
+        <g transform="translate(600, 60)">
+          <path d="M0,20 C 60,35 120,-5 180,20 C 240,35 300,-5 360,20 C 420,35 480,-5 540,20 C 600,35 660,-5 720,20 L720,80 L0,80 Z"
+                fill="#0099e6" fill-opacity="0.7" />
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+
+
+
+    <!-- Titre principal -->
+    <h1 class="mt-6 text-4xl md:text-5xl font-bold text-gray-800">Nous arrivons bientôt</h1>
+    <p class="mt-4 text-lg md:text-xl text-gray-600">La plateforme est en développement. Inscrivez-vous pour être informé du lancement.</p>
+
+    <!-- Galerie d’images -->
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/images/1000023421.jpg" alt="Aperçu 1" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/images/1000023433.jpg" alt="Aperçu 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://raw.githubusercontent.com/houssem-planifpay-tunisia/plateforme-education/master/images/1000023418.jpg" alt="Aperçu 2" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+      </div>
+    
+
+    <!-- Call to Action -->
+    <p class="mt-8 text-blue-700 font-semibold text-lg md:text-xl">Lancement prévu — restez connectés.</p>
+
+    <!-- Formulaire d'inscription -->
+<form id="subscribeForm" class="mt-6 max-w-md mx-auto bg-white p-4 rounded-lg shadow-md">
+
+  <div class="mb-4">
+  <input type="text" name="prenom" placeholder="Votre prénom"
+    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+</div>
+<div class="mb-4">
+  <input type="text" name="nom" placeholder="Votre nom"
+    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+</div>
+
+  <div class="mb-4">
+    <input type="email" name="email" placeholder="Votre email"
+      class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+  </div>
+  <div class="mb-4">
+    <input type="tel" name="phone" placeholder="Votre téléphone"
+      class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+  </div>
+  <button type="submit"
+    class="bg-blue-700 hover:bg-blue-800 text-yellow-300 px-6 py-2 rounded-md font-bold text-lg transition duration-300 w-full">
+    S’inscrire
+  </button>
+  <p id="subscribeMsg" class="text-center mt-3 text-sm text-gray-700"></p>
+</form>
+
+
+    <!-- Note admin -->
+    <small class="mt-4 block text-gray-500 text-sm">Si vous êtes membre de l'équipe, connectez-vous via <code>/admin</code> (ou utilisez votre secret de dev).</small>
+
+    <!-- Bouton Télécharger Brochure -->
+    <div class="mt-12">
+      <a href="/brochure/BACE_Brochure.pdf" download class="bg-blue-700 hover:bg-blue-800 text-yellow-300 px-8 py-4 rounded-md font-bold text-lg transition duration-300 inline-flex items-center">
+        Demander l'emploi du temps <i class="fas fa-download ml-2"></i>
+      </a>
+    </div>
+  
+  </main>
+
+  
+ <!-- ✅ FOOTER -->
+<footer class="bg-primary text-white pt-16 pb-8">
+  <!-- Centrer la grille pour PC -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 justify-items-center">
+    
+    <div class="text-center md:text-left">
+      <h3 class="text-lg font-bold mb-4">Bardo Academic Centre for Education</h3>
+      <p class="text-blue-700">BACE est un Centre Académique Éducatif, Agrée par le Ministère de l’Éducation. Votre Réussite est Notre Objectif.</p>
+      <div class="flex justify-center md:justify-start space-x-4 mt-4">
+        <a href="https://www.facebook.com/TheDigitalSpark/" target="_blank" class="text-blue-700 hover:text-accent text-xl">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="text-pink-800 hover:text-accent text-xl">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="text-blue-900 hover:text-accent text-xl">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="text-red-600 hover:text-accent text-xl">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="text-center md:text-left">
+      <h3 class="text-lg font-bold mb-4">Spécialisé dans</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="text-blue-600 hover:text-blue-800 transition-colors duration-300">la Préparation aux Examens Officiels</a></li>
+        <li><a href="#" class="text-green-600 hover:text-green-800 transition-colors duration-300">le Soutien Scolaire, du Primaire au Secondaire</a></li>
+        <li><a href="#" class="text-yellow-600 hover:text-yellow-800 transition-colors duration-300">Accompagnement pédagogique avancé</a></li>
+        <li><a href="#" class="text-orange-600 hover:text-orange-800 transition-colors duration-300">Formations en Langues et en Informatique</a></li>
+      </ul>
+    </div>
+    
+    <div class="text-center md:text-left" id="contact">
+      <h3 class="text-lg font-bold mb-4">Contact</h3>
+      <address class="not-italic text-blue-800 space-y-2">
+        <p><i class="fas fa-map-marker-alt mr-2 text-accent"></i> 20 Avenue du Bardo, Tunis</p>
+        <p><i class="fas fa-phone-alt mr-2 text-accent"></i> +216 97 898 050</p>
+        <p><i class="fas fa-envelope mr-2 text-accent"></i> bace.dg@gmail.com</p>
+        <p><i class="fas fa-clock mr-2 text-accent"></i> Lun-Ven: 8h-18h</p>
+        <p><i class="fas fa-clock mr-2 text-accent"></i> Samedi: 8h-15h</p>
+      </address>
+    </div>
+    
+  </div>
+  
+  <div class="border-t border-green-300 mt-12 pt-6 text-center text-gray-700 text-sm">
+    <p>© 2023 Bardo Academic Centre for Education. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+
+  try {
+    // Désactiver le bouton pendant l'envoi
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Inscription en cours...';
+
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prenom: form.prenom.value,
+        nom: form.nom.value,
+        email: form.email.value,
+        phone: form.phone.value
+      })
+    });
+
+    const data = await res.json();
+    const msg = document.getElementById('subscribeMsg');
+    
+    if (res.ok) {
+      msg.style.color = 'green';
+      msg.innerHTML = data.message;
+      
+      // Afficher quand même le code et QR en backup
+      if (data.code4 && data.qrCode) {
+        msg.innerHTML += `<br><strong>Votre code (gardez-le !) :</strong> ${data.code4}<br>`;
+        msg.innerHTML += `<img src="${data.qrCode}" alt="QR Code" style="margin-top:10px;max-width:150px;">`;
+        msg.innerHTML += `<p style="font-size: 12px; color: #666;">Un email avec vos identifiants vous a été envoyé.</p>`;
+      }
+    } else {
+      msg.style.color = 'red';
+      msg.innerHTML = data.message;
+    }
+
+    form.reset();
+    
+  } catch (error) {
+    const msg = document.getElementById('subscribeMsg');
+    msg.style.color = 'red';
+    msg.innerHTML = 'Erreur de connexion. Veuillez réessayer.';
+  } finally {
+    // Réactiver le bouton
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+  }
+});
+
+</script>
+
+
+</body>
+</html>

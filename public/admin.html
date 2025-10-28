@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - BACE Plateforme</title>
+    <!-- CSS local au lieu de Tailwind CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .stat-card { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+  .stat-card.success { background: linear-gradient(135deg, #a3d5ff, #0167ff); }
+  .stat-card.warning { background: linear-gradient(135deg, #eb89ffd3, #ff8902); }
+  .stat-card.danger { background: linear-gradient(135deg, #00407b, #63ff7d); }
+  .nav-item.active { background-color: #eff6ff; color: #1e40af; border-right: 3px solid #3b82f6; }
+  .nav-item { padding: 12px 16px; display: block; color: #4b5563; border-radius: 4px; margin: 4px 8px; }
+  .nav-item:hover { background-color: #f3f4f6; }
+  .status-badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+  .status-pending { background: #fef3c7; color: #92400e; }
+  .status-processed { background: #dbeafe; color: #1e40af; }
+  .status-shipped { background: #f0f9ff; color: #0369a1; }
+  .status-delivered { background: #f0fdf4; color: #166534; }
+  .table-row:hover { background-color: #f9fafb; }
+  .hidden { display: none; }
+</style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div class="sidebar fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg">
+        <div class="flex items-center justify-center h-16 bg-blue-700">
+            <h1 class="text-white text-xl font-bold">BACE Admin</h1>
+        </div>
+        
+        <nav class="mt-8">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <i class="fas fa-chart-line mr-3"></i>
+                Tableau de bord
+            </a>
+            <a href="#" class="nav-item" data-section="subscribers">
+                <i class="fas fa-users mr-3"></i>
+                Abonnés
+            </a>
+            <a href="#" class="nav-item" data-section="orders">
+                <i class="fas fa-shopping-cart mr-3"></i>
+                Commandes
+            </a>
+            <a href="#" class="nav-item" data-section="analytics">
+                <i class="fas fa-chart-bar mr-3"></i>
+                Analytics
+            </a>
+        </nav>
+        
+        <div class="absolute bottom-0 w-full p-4 border-t">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-gray-900">Administrateur</p>
+                    <p class="text-xs text-gray-500">Connecté</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content ml-64 min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800" id="pageTitle">Tableau de bord</h2>
+                    <p class="text-gray-600" id="pageSubtitle">Vue d'ensemble de la plateforme</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Rechercher..." 
+                               class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <button class="p-2 text-gray-600 hover:text-blue-600" title="Notifications" aria-label="Notifications">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                    </button>
+                    <button id="refreshBtn" class="p-2 text-gray-600 hover:text-blue-600" title="Rafraîchir" aria-label="Rafraîchir">
+                        <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active p-6">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card text-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-white bg-opacity-20 rounded-lg">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm opacity-90">Total Abonnés</p>
+                            <h3 class="text-2xl font-bold" id="totalSubscribers">0</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card success text-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-white bg-opacity-20 rounded-lg">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm opacity-90">Commandes Total</p>
+                            <h3 class="text-2xl font-bold" id="totalOrders">0</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card warning text-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-white bg-opacity-20 rounded-lg">
+                            <i class="fas fa-clock text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm opacity-90">En Attente</p>
+                            <h3 class="text-2xl font-bold" id="pendingOrders">0</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card danger text-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-white bg-opacity-20 rounded-lg">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm opacity-90">Revenus Total</p>
+                            <h3 class="text-2xl font-bold" id="totalRevenue">0 DT</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Recent Activity -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold mb-4">Évolution des inscriptions</h3>
+                    <div id="chartPlaceholder" class="text-center text-gray-500 py-8">
+                        <i class="fas fa-chart-bar text-4xl mb-2"></i>
+                        <p>Graphique des inscriptions</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold mb-4">Activité récente</h3>
+                    <div id="recentActivity" class="space-y-4">
+                        <div class="text-center text-gray-500 py-4">
+                            <i class="fas fa-spinner fa-spin"></i> Chargement...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscribers Section -->
+        <section id="subscribers" class="section p-6 hidden">
+            <div class="bg-white rounded-xl shadow-sm">
+                <div class="p-6 border-b">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-semibold">Gestion des Abonnés</h3>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-download mr-2"></i>Exporter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Abonné</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code Accès</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">QR Code</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscribersTable" class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>Chargement des abonnés...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="p-4 border-t bg-gray-50">
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-700">
+                            Affichage de <span id="subscribersCount">0</span> abonnés
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="section p-6 hidden">
+            <div class="bg-white rounded-xl shadow-sm">
+                <div class="p-6 border-b">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-semibold">Gestion des Commandes</h3>
+                        <div class="flex space-x-3">
+                            <select id="statusFilter" class="border rounded-lg px-3 py-2">
+                                <option value="">Tous les statuts</option>
+                                <option value="pending">En attente</option>
+                                <option value="processed">Traité</option>
+                                <option value="shipped">Expédié</option>
+                                <option value="delivered">Livré</option>
+                            </select>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-download mr-2"></i>Exporter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Commande</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produit</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prix</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Preuve</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTable" class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td colspan="8" class="px-6 py-4 text-center text-gray-500">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>Chargement des commandes...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="p-4 border-t bg-gray-50">
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-700">
+                            Affichage de <span id="ordersCount">0</span> commandes
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="section p-6 hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold mb-4">Répartition des profils</h3>
+                    <div class="text-center text-gray-500 py-8">
+                        <i class="fas fa-chart-pie text-4xl mb-2"></i>
+                        <p>Graphique des profils</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold mb-4">Revenus par mois</h3>
+                    <div class="text-center text-gray-500 py-8">
+                        <i class="fas fa-chart-line text-4xl mb-2"></i>
+                        <p>Graphique des revenus</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-6 lg:col-span-2">
+                    <h3 class="text-lg font-semibold mb-4">Performance des ventes</h3>
+                    <div class="text-center text-gray-500 py-8">
+                        <i class="fas fa-trending-up text-4xl mb-2"></i>
+                        <p>Graphique des performances</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal pour voir les détails d'une commande -->
+    <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Détails de la commande</h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6" id="orderModalContent">
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p>Chargement des détails...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = '/api/admin';
+
+        // Vérifier l'authentification
+        function checkAdminAuth() {
+            const token = localStorage.getItem('adminToken');
+            if (!token) {
+                window.location.href = '/admin-login.html';
+                return null;
+            }
+            
+            // Vérifier si le token est expiré
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                if (payload.exp * 1000 < Date.now()) {
+                    localStorage.removeItem('adminToken');
+                    window.location.href = '/admin-login.html';
+                    return null;
+                }
+            } catch (e) {
+                localStorage.removeItem('adminToken');
+                window.location.href = '/admin-login.html';
+                return null;
+            }
+            
+            return token;
+        }
+
+        // Headers authentifiés
+        function getAuthHeaders() {
+            const token = checkAdminAuth();
+            return {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            };
+        }
+
+        // Déconnexion
+        function logoutAdmin() {
+            localStorage.removeItem('adminToken');
+            window.location.href = '/admin-login.html';
+        }
+
+        // Éléments DOM
+        const sections = {
+            dashboard: document.getElementById('dashboard'),
+            subscribers: document.getElementById('subscribers'),
+            orders: document.getElementById('orders'),
+            analytics: document.getElementById('analytics')
+        };
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = item.dataset.section;
+                
+                // Mettre à jour la navigation
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Afficher la section correspondante
+                Object.values(sections).forEach(sec => sec.classList.add('hidden'));
+                sections[section].classList.remove('hidden');
+                
+                // Mettre à jour le titre
+                updatePageTitle(section);
+                
+                // Charger les données si nécessaire
+                if (section === 'subscribers') loadSubscribers();
+                if (section === 'orders') loadOrders();
+                if (section === 'analytics') loadAnalytics();
+            });
+        });
+
+        function updatePageTitle(section) {
+            const titles = {
+                dashboard: 'Tableau de bord',
+                subscribers: 'Gestion des Abonnés',
+                orders: 'Gestion des Commandes',
+                analytics: 'Analytics & Rapports'
+            };
+            
+            const subtitles = {
+                dashboard: 'Vue d\'ensemble de la plateforme',
+                subscribers: 'Liste complète des abonnés',
+                orders: 'Suivi et gestion des commandes',
+                analytics: 'Statistiques et performances'
+            };
+            
+            document.getElementById('pageTitle').textContent = titles[section];
+            document.getElementById('pageSubtitle').textContent = subtitles[section];
+        }
+
+        // Chargement des données
+        async function loadDashboard() {
+            try {
+                const [subscribersRes, ordersRes] = await Promise.all([
+                    fetch(`${API_BASE}/subscribers`, {
+                        headers: getAuthHeaders()
+                    }),
+                    fetch(`${API_BASE}/orders`, {
+                        headers: getAuthHeaders()
+                    })
+                ]);
+
+                if (subscribersRes.status === 401 || ordersRes.status === 401) {
+                    logoutAdmin();
+                    return;
+                }
+
+                const subscribers = await subscribersRes.json();
+                const orders = await ordersRes.json();
+
+                if (subscribers.ok && orders.ok) {
+                    updateDashboardStats(subscribers.subscribers, orders.orders);
+                    updateRecentActivity(orders.orders || []);
+                } else {
+                    console.error('Erreur données:', subscribers, orders);
+                    showError('Erreur de chargement des données');
+                }
+            } catch (error) {
+                console.error('Erreur chargement dashboard:', error);
+                showError('Erreur de connexion au serveur');
+            }
+        }
+
+        function updateDashboardStats(subscribers, orders) {
+            const subs = subscribers || [];
+            const ords = orders || [];
+            
+            // Statistiques
+            document.getElementById('totalSubscribers').textContent = subs.length;
+            document.getElementById('totalOrders').textContent = ords.length;
+            document.getElementById('pendingOrders').textContent = ords.filter(o => o.status === 'pending').length;
+            
+            // Revenus total
+            const totalRevenue = ords.reduce((sum, order) => sum + (order.price || 0), 0);
+            document.getElementById('totalRevenue').textContent = `${totalRevenue} DT`;
+        }
+
+        function updateRecentActivity(orders) {
+            const container = document.getElementById('recentActivity');
+            container.innerHTML = '';
+            
+            const recentOrders = orders.slice(0, 5);
+            
+            if (recentOrders.length === 0) {
+                container.innerHTML = '<div class="text-center text-gray-500 py-4">Aucune activité récente</div>';
+                return;
+            }
+            
+            recentOrders.forEach(order => {
+                const activity = document.createElement('div');
+                activity.className = 'flex items-start space-x-3 p-3 bg-gray-50 rounded-lg';
+                activity.innerHTML = `
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-blue-600 text-sm"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-sm text-gray-900">
+                            <strong>${order.prenom} ${order.nom}</strong> a commandé le pack anglais
+                        </p>
+                        <p class="text-xs text-gray-500">
+                            ${new Date(order.createdAt).toLocaleString('fr-FR')} • ${order.price} DT
+                        </p>
+                    </div>
+                    <span class="status-badge status-${order.status || 'pending'} text-xs">
+                        ${getStatusText(order.status)}
+                    </span>
+                `;
+                container.appendChild(activity);
+            });
+        }
+
+        async function loadSubscribers() {
+            try {
+                const response = await fetch(`${API_BASE}/subscribers`, {
+                    headers: getAuthHeaders()
+                });
+
+                if (response.status === 401) {
+                    logoutAdmin();
+                    return;
+                }
+
+                const data = await response.json();
+                if (data.ok) {
+                    displaySubscribers(data.subscribers || []);
+                } else {
+                    showError('Erreur chargement abonnés');
+                }
+            } catch (error) {
+                console.error('Erreur chargement abonnés:', error);
+                showError('Erreur de connexion');
+            }
+        }
+
+        function displaySubscribers(subscribers) {
+            const tbody = document.getElementById('subscribersTable');
+            tbody.innerHTML = '';
+            
+            if (subscribers.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                            <i class="fas fa-users text-2xl mb-2 block"></i>
+                            Aucun abonné trouvé
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            subscribers.forEach(sub => {
+                const row = document.createElement('tr');
+                row.className = 'table-row';
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                                ${sub.firstName?.charAt(0) || ''}${sub.lastName?.charAt(0) || ''}
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">
+                                    ${sub.firstName || ''} ${sub.lastName || ''}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${sub.email || 'N/A'}</div>
+                        <div class="text-sm text-gray-500">${sub.phone || 'N/A'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-mono font-bold text-blue-600">${sub.code4 || 'N/A'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${sub.qrCode ? 
+                            `<img src="${sub.qrCode}" alt="QR Code" class="w-12 h-12 rounded border">` : 
+                            '<span class="text-gray-400">N/A</span>'
+                        }
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${sub.createdAt ? new Date(sub.createdAt).toLocaleDateString('fr-FR') : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="status-badge ${sub.paid ? 'status-delivered' : 'status-pending'}">
+                            ${sub.paid ? 'Payé' : 'En attente'}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('subscribersCount').textContent = subscribers.length;
+        }
+
+        async function loadOrders() {
+            try {
+                const response = await fetch(`${API_BASE}/orders`, {
+                    headers: getAuthHeaders()
+                });
+
+                if (response.status === 401) {
+                    logoutAdmin();
+                    return;
+                }
+
+                const data = await response.json();
+                if (data.ok) {
+                    displayOrders(data.orders || []);
+                } else {
+                    showError('Erreur chargement commandes');
+                }
+            } catch (error) {
+                console.error('Erreur chargement commandes:', error);
+                showError('Erreur de connexion');
+            }
+        }
+
+        function displayOrders(orders) {
+            const tbody = document.getElementById('ordersTable');
+            tbody.innerHTML = '';
+            
+            if (orders.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="px-6 py-4 text-center text-gray-500">
+                            <i class="fas fa-shopping-cart text-2xl mb-2 block"></i>
+                            Aucune commande trouvée
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            orders.forEach(order => {
+                const row = document.createElement('tr');
+                row.className = 'table-row';
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${order._id || 'N/A'}</div>
+                        <div class="text-sm text-gray-500">${order.profile || 'N/A'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${order.prenom || ''} ${order.nom || ''}</div>
+                        <div class="text-sm text-gray-500">${order.email || 'N/A'}</div>
+                        <div class="text-sm text-gray-500">${order.telephone || 'N/A'}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900">Pack Révision Anglais BAC</div>
+                        <div class="text-sm text-gray-500">${order.lycee || 'Non spécifié'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                        ${order.price || 0} DT
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="viewProof('${order._id}')" class="text-blue-600 hover:text-blue-900 text-sm">
+                            <i class="fas fa-eye mr-1"></i>Voir
+                        </button>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${order.createdAt ? new Date(order.createdAt).toLocaleDateString('fr-FR') : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="status-badge status-${order.status || 'pending'}">
+                            ${getStatusText(order.status)}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <div class="flex space-x-2">
+                            <button onclick="updateOrderStatus('${order._id}', 'processed')" 
+                                    class="text-green-600 hover:text-green-900 ${order.status !== 'pending' ? 'opacity-50 cursor-not-allowed' : ''}"
+                                    ${order.status !== 'pending' ? 'disabled' : ''}>
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button onclick="updateOrderStatus('${order._id}', 'shipped')" 
+                                    class="text-blue-600 hover:text-blue-900 ${order.status !== 'processed' ? 'opacity-50 cursor-not-allowed' : ''}"
+                                    ${order.status !== 'processed' ? 'disabled' : ''}>
+                                <i class="fas fa-shipping-fast"></i>
+                            </button>
+                            <button onclick="updateOrderStatus('${order._id}', 'delivered')" 
+                                    class="text-purple-600 hover:text-purple-900 ${order.status !== 'shipped' ? 'opacity-50 cursor-not-allowed' : ''}"
+                                    ${order.status !== 'shipped' ? 'disabled' : ''}>
+                                <i class="fas fa-box"></i>
+                            </button>
+                            <button onclick="viewOrderDetails('${order._id}')" class="text-gray-600 hover:text-gray-900">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('ordersCount').textContent = orders.length;
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'En attente',
+                'processed': 'Traité',
+                'shipped': 'Expédié',
+                'delivered': 'Livré'
+            };
+            return statusMap[status] || 'En attente';
+        }
+
+        async function updateOrderStatus(orderId, newStatus) {
+            if (!confirm('Confirmer le changement de statut ?')) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/order/${orderId}/status`, {
+                    method: 'PUT',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify({ status: newStatus })
+                });
+                
+                if (response.ok) {
+                    alert('Statut mis à jour avec succès !');
+                    loadOrders(); // Recharger les commandes
+                } else {
+                    alert('Erreur lors de la mise à jour du statut');
+                }
+            } catch (error) {
+                console.error('Erreur mise à jour statut:', error);
+                alert('Erreur de connexion');
+            }
+        }
+
+        function viewProof(orderId) {
+            window.open(`${API_BASE}/order/${orderId}/proof`, '_blank');
+        }
+
+        async function viewOrderDetails(orderId) {
+            try {
+                const response = await fetch(`${API_BASE}/order/${orderId}`, {
+                    headers: getAuthHeaders()
+                });
+                
+                if (response.status === 401) {
+                    logoutAdmin();
+                    return;
+                }
+
+                const data = await response.json();
+                if (data.ok) {
+                    const order = data.order;
+                    
+                    document.getElementById('orderModalContent').innerHTML = `
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Référence</label>
+                                    <p class="mt-1 text-sm text-gray-900">${order._id || 'N/A'}</p>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Date</label>
+                                    <p class="mt-1 text-sm text-gray-900">${order.createdAt ? new Date(order.createdAt).toLocaleString('fr-FR') : 'N/A'}</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Client</label>
+                                <p class="mt-1 text-sm text-gray-900">${order.prenom || ''} ${order.nom || ''}</p>
+                                <p class="text-sm text-gray-600">${order.email || 'N/A'}</p>
+                                <p class="text-sm text-gray-600">${order.telephone || 'N/A'}</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Détails commande</label>
+                                <div class="mt-2 bg-gray-50 p-3 rounded-lg">
+                                    <p class="text-sm"><strong>Produit:</strong> Pack Révision Anglais BAC</p>
+                                    <p class="text-sm"><strong>Profil:</strong> ${order.profile || 'N/A'}</p>
+                                    <p class="text-sm"><strong>Lycée:</strong> ${order.lycee || 'Non spécifié'}</p>
+                                    <p class="text-sm"><strong>Prix:</strong> ${order.price || 0} DT</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Statut</label>
+                                <select id="modalStatus" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>En attente</option>
+                                    <option value="processed" ${order.status === 'processed' ? 'selected' : ''}>Traité</option>
+                                    <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Expédié</option>
+                                    <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Livré</option>
+                                </select>
+                            </div>
+                            
+                            <div class="flex justify-end space-x-3 pt-4">
+                                <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                    Annuler
+                                </button>
+                                <button onclick="saveOrderStatus('${order._id}')" class="px-4 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700">
+                                    Sauvegarder
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.getElementById('orderModal').classList.remove('hidden');
+                } else {
+                    alert('Erreur chargement des détails');
+                }
+            } catch (error) {
+                console.error('Erreur chargement détails:', error);
+                alert('Erreur de connexion');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+        }
+
+        async function saveOrderStatus(orderId) {
+            const newStatus = document.getElementById('modalStatus').value;
+            await updateOrderStatus(orderId, newStatus);
+            closeModal();
+        }
+
+        function loadAnalytics() {
+            // Pour l'instant, on laisse les placeholders
+            console.log('Chargement analytics...');
+        }
+
+        // Fonction pour afficher les erreurs
+        function showError(message) {
+            alert('Erreur: ' + message);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Vérifier l'authentification
+            checkAdminAuth();
+            
+            // Ajouter bouton déconnexion
+            const header = document.querySelector('header .flex:last-child');
+            const logoutBtn = document.createElement('button');
+            logoutBtn.className = 'p-2 text-gray-600 hover:text-red-600';
+            logoutBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i>';
+            logoutBtn.title = 'Déconnexion';
+            logoutBtn.onclick = logoutAdmin;
+            header.appendChild(logoutBtn);
+
+            // Charger les données initiales
+            loadDashboard();
+            
+            // Rafraîchissement manuel
+            document.getElementById('refreshBtn').addEventListener('click', () => {
+                loadDashboard();
+                if (!sections.dashboard.classList.contains('hidden')) {
+                    loadSubscribers();
+                }
+                if (!sections.orders.classList.contains('hidden')) {
+                    loadOrders();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

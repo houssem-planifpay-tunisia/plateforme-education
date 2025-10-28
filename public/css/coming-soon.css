@@ -1,0 +1,39 @@
+/* public/css/coming-soon.css */
+:root { --bg:#f7f8fb; --accent:#0b5cff; --text:#222; }
+body { margin:0; font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--text); display:flex; min-height:100vh; align-items:center; justify-content:center; }
+.wrap { text-align:center; padding:36px; max-width:900px; }
+.logo { max-width:160px; margin-bottom:18px; }
+h1 { font-size:34px; margin:6px 0; }
+.gallery { margin:20px 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.gallery img { width:220px; height:140px; object-fit:cover; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+.cta { margin-top:12px; font-weight:600; color:var(--accent); }
+small { display:block; margin-top:18px; color:#666; }
+@media (max-width:600px) {
+  h1 { font-size:28px; }
+  .gallery img { width:160px; height:100px; }
+}
+
+.wave1 {
+  animation: moveWave1 60s linear infinite;   /* avant 12s */
+}
+
+.wave2 {
+  animation: moveWave2 8s linear infinite;   /* avant 16s */
+}
+
+.wave3 {
+  animation: moveWave3 10s linear infinite;  /* avant 20s */
+}
+
+@keyframes moveWave1 {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-600px);}
+}
+@keyframes moveWave2 {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-600px);}
+}
+@keyframes moveWave3 {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-600px);}
+}

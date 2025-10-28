@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effet Pivot Doux</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .scroll-section {
+            margin: 60px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform-origin: left center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.4s ease;
+            opacity: 0.9;
+        }
+
+        .scroll-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .scroll-section p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .scroll-section img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .scroll-section.active {
+            transform: perspective(800px) rotateY(0deg) translateX(0);
+            opacity: 1;
+        }
+
+        .scroll-section:not(.active) {
+            transform: perspective(800px) rotateY(10deg) translateX(30px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="scroll-section">
+            <h2>Slow, Disconnected Launches</h2>
+            <p>Inefficient processes and disjointed teams delay market entry and hinder global success.</p>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format" alt="Business meeting">
+        </div>
+
+        <div class="scroll-section">
+            <h2>Introducing Nativ</h2>
+            <p>All-in-one content culturalization platform.</p>
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format" alt="Platform interface">
+        </div>
+
+        <div class="scroll-section">
+            <h2>Launch Instantly Everywhere</h2>
+            <p>Manual adaptation of content, visuals, and experiences for each market is time-consuming. Streamline culturalization to launch faster without sacrificing quality.</p>
+            <img src="https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?w=800&auto=format" alt="Global network">
+        </div>
+
+        <div class="scroll-section">
+            <h2>Seamless Visual Experience</h2>
+            <p>Discover how our platform can transform your global content strategy.</p>
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format" alt="Team collaboration">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.scroll-section');
+            
+            // Configuration
+            const options = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -100px 0px"
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Optionnel: Retirer la classe si vous voulez que l'effet se répète
+                        // entry.target.classList.remove('active');
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+                // Initial state
+                section.classList.add('init');
+            });
+        });
+    </script>
+</body>
+</html>
